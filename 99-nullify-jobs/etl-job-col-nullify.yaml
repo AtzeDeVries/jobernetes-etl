@@ -15,7 +15,7 @@ spec:
       restartPolicy: Never
       containers:
       - name: etl-col-nullify
-        image: atzedevries/docker-nba-etl:V2.6-69-g9d0757e4a
+        image: naturalis/nba-etl:V2.11_dev-0c64f21
         env:
         - name: "ES_DNS"
           value: "elasticsearch"

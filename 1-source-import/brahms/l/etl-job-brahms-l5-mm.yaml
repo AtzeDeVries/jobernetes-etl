@@ -15,7 +15,7 @@ spec:
       restartPolicy: Never
       containers:
       - name: etl-brahms-mm
-        image: atzedevries/docker-nba-etl:V2.9
+        image: naturalis/nba-etl:V2.11_dev-0c64f21
         imagePullPolicy: Always
         command: ["/bin/bash"]
         args:
