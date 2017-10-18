@@ -31,7 +31,7 @@ spec:
           value: "INFO"
         - name: "TEST_GENERA"
           value: "#test_genera=malus,parus,larus,bombus,rhododendron,felix,tulipa,rosa,canis,passer,trientalis"
-       volumeMounts:
+        volumeMounts:
         - name: nfs-pvc
           mountPath: /payload/software/log
         - name: etl-nba-properties
