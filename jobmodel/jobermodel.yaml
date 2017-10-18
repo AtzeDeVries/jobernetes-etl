@@ -1,7 +1,7 @@
 ---
 jobernetes_config:
   cleanup: False
-  refresh_time: 600
+  refresh_time: 300
   ssl_insecure_warnings: False
   incluster: True
 jobernetes:

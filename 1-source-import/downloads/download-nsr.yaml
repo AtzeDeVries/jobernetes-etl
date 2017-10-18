@@ -25,13 +25,13 @@ spec:
           && rm -fr /data/nsr
           && git clone https://github.com/naturalis/nba-brondata-nsr /data/nsr -b 2017.10.14--05.33.01
           && (cd /data/nsr ; ./uncompress.sh)
-      env:
+        env:
         - name: "BRONDATA_TAG"
           value: "2017.10.14--05.33.01"
-      volumeMounts:
+        volumeMounts:
         - name: sourcedata-pvc
           mountPath: /data
-    volumes:
+      volumes:
       - name: sourcedata-pvc
         persistentVolumeClaim:
           claimName: sourcedata

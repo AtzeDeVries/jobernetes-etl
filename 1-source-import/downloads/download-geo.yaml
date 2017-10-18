@@ -25,13 +25,13 @@ spec:
           && rm -fr /data/geo
           && git clone https://github.com/naturalis/nba-brondata-geo /data/geo -b master
           && (cd /data/geo ; ./uncompress.sh)
-      env:
+        env:
         - name: "BRONDATA_TAG"
           value: "master"
-      volumeMounts:
+        volumeMounts:
         - name: sourcedata-pvc
           mountPath: /data
-    volumes:
+      volumes:
       - name: sourcedata-pvc
         persistentVolumeClaim:
           claimName: sourcedata
