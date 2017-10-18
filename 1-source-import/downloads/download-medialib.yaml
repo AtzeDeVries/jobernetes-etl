@@ -1,0 +1,37 @@
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: download-medialib
+  labels:
+    app: download-medialib
+spec:
+  template:
+    metadata:
+      name: download-medialib
+      labels:
+        app: download-medialib
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: download-medialib
+        image: alpine
+        imagePullPolicy: Always
+        command: ["/bin/sh"]
+        args:
+        - "-c"
+        - >
+          apk add --no-cache git
+          git clone https://github.com/naturalis/nba-brondata-medialib /data/medialib -b $BRONDATA_TAG
+          && (cd /data/medialib ; ./uncompress.sh)
+      env:
+        - name: "BRONDATA_TAG"
+          value: "2017-10"
+      volumeMounts:
+        - name: sourcedata-pvc
+          mountPath: /data
+    volumes:
+      - name: sourcedata-pvc
+        persistentVolumeClaim:
+          claimName: sourcedata
+

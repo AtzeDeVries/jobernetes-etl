@@ -1,0 +1,55 @@
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: etl-col
+  labels:
+    app: etl-col
+spec:
+  template:
+    metadata:
+      name: etl-col
+      labels:
+        app: etl-col
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: etl-col
+        image: atzedevries/docker-nba-etl:V2.9
+        imagePullPolicy: Always
+        command: ["/bin/bash"]
+        args:
+        - "-c"
+        - >
+          sed -i "s/#test_genera.*/$TEST_GENERA/g" /payload/software/sh/include.sh 
+          && sed -i "s/truncate=true/truncate=false/g" /payload/software/sh/include.sh
+          && ./col-import
+        env:
+        - name: "LOG_LEVEL"
+          value: "INFO"
+        - name: "TEST_GENERA"
+          value: "#test_genera=malus,parus,larus,bombus,rhododendron,felix,tulipa,rosa,canis,passer,trientalis"
+        volumeMounts:
+        - name: nfs-pvc
+          mountPath: /payload/software/log
+        - name: etl-nba-properties
+          mountPath: /payload/software/conf/nba.properties
+          subPath: nba.properties
+        - name: etl-log4j2-xml
+          mountPath: /payload/software/conf/log4j2.xml
+          subPath: log4j2.xml
+        - name: sourcedata-pvc
+          mountPath: /payload/data
+      volumes:
+      - name: sourcedata-pvc
+        persistentVolumeClaim:
+          claimName: sourcedata
+      - name: nfs-pvc
+        persistentVolumeClaim:
+          claimName: nfslog
+      - name: etl-nba-properties
+        configMap:
+          name: etl.nba.properties
+      - name: etl-log4j2-xml
+        configMap:
+          name: etl.log4j2.xml
