@@ -73,7 +73,7 @@ jobernetes:
           - download_medialib
       #import nsr
       - name: import_nsr
-        job_path: jobernetes-etl/1-source-import/snr/etl-job-nsr.yaml
+        job_path: jobernetes-etl/1-source-import/nsr/etl-job-nsr.yaml
         depends_on:
           - download_nsr
           - download_medialib
