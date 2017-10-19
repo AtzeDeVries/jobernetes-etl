@@ -15,7 +15,7 @@ spec:
       restartPolicy: Never
       containers:
       - name: etl-brahms-l3-sp
-        image: naturalis/nba-etl:V2.11_dev-0c64f21
+        image: naturalis/nba-etl:V2.11_dev-0d025b0
         imagePullPolicy: Always
         command: ["/bin/bash"]
         args:
