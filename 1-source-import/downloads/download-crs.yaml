@@ -23,10 +23,8 @@ spec:
         - >
           apk add --no-cache git
           && rm -fr /data/crs
-          && git clone https://github.com/naturalis/nba-brondata-crs /data/crs -b tarly
+          && git clone https://github.com/naturalis/nba-brondata-crs /data/crs -b 2017-10
           && (cd /data/crs ; ./uncompress.sh)
-          && (cd /data/crs ; tar -xf multimedia.tar)
-          && (cd /data/crs ; tar -xf specimens.tar)
         env:
         - name: "BRONDATA_TAG"
           value: "newly"
