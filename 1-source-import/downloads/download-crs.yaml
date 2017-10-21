@@ -15,24 +15,39 @@ spec:
       restartPolicy: Never
       containers:
       - name: download-crs
-        image: alpine
+        #image: alpine
+        image: timonier/drive
         imagePullPolicy: Always
         command: ["/bin/sh"]
         args:
         - "-c"
         - >
-          apk add --no-cache git
-          && rm -fr /data/crs
-          && git clone https://github.com/naturalis/nba-brondata-crs /data/crs -b 2017-10
-          && (cd /data/crs ; ./uncompress.sh)
+          cd /data
+          && rm -fr crs
+          && mkdir -p crs
+          && drive pull --no-prompt -verbose nba-source-crs/multimedia.tar
+          && drive pull --no-prompt -verbose nba-source-crs/specimens.tar
+          && tar -xvf nba-source-crs/multimedia.tar -C /data/crs/
+          && tar -xvf nba-source-crs/specimens.tar -C /data/crs/
+          && rm -fr nba-source-crs
+          #apk add --no-cache git
+          #&& rm -fr /data/crs
+          #&& git clone https://github.com/naturalis/nba-brondata-crs /data/crs -b 2017-10
+          #&& (cd /data/crs ; ./uncompress.sh)
         env:
         - name: "BRONDATA_TAG"
           value: "newly"
         volumeMounts:
         - name: sourcedata-pvc
           mountPath: /data
+        - name: etl-drive
+          mountPath: /data/.gd/credentials.json
+          subPath: credentials.json
       volumes:
       - name: sourcedata-pvc
         persistentVolumeClaim:
           claimName: sourcedata
+      - name: etl-drive
+        configMap:
+          name: etl.drive
 
