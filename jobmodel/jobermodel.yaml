@@ -1,9 +1,10 @@
 ---
 jobernetes_config:
   cleanup: False
-  refresh_time: 300
+  refresh_time: 20
   ssl_insecure_warnings: False
   incluster: True
+  parallelization: 4
 jobernetes:
   - phase_name: bootstrap
     jobs:
