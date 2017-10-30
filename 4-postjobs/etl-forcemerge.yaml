@@ -19,5 +19,5 @@ spec:
         imagePullPolicy: Always
         args:
         - -XPOST
-        - 'http://elasticsearch:9200/specimen,taxon,multimedia/_forcemerge?max_num_segments=1'
+        - 'http://elasticsearch-data:9200/specimen,taxon,multimedia/_forcemerge?max_num_segments=1'
 
