@@ -95,3 +95,8 @@ jobernetes:
     jobs:
       - name: force_merge
         job_path: jobernetes-etl/4-postjobs/etl-forcemerge.yaml
+
+  - phase_name: snapshot
+    jobs:
+      - name: snapshot
+        job_path: jobernetes-etl/5-snapshot/etl-snapshot.yaml
