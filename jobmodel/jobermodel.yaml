@@ -98,5 +98,5 @@ jobernetes:
 
   - phase_name: snapshot
     jobs:
-      - name: snapshot
+      - name: take_snapshot
         job_path: jobernetes-etl/5-snapshot/etl-snapshot.yaml
