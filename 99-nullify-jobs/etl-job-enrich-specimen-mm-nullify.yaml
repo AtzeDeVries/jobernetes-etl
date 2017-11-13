@@ -15,7 +15,7 @@ spec:
       restartPolicy: Never
       containers:
       - name: etl-enrich-specimens-mm-nullify
-        image: naturalis/nba-etl:V2.11.2-5a9d0f4
+        image: naturalis/nba-etl:V2.11.3_dev-3f613b0
         env:
         - name: "ES_DNS"
           value: "elasticsearch"
