@@ -82,9 +82,14 @@ jobernetes:
 
   - phase_name: enrichment
     jobs:
-      - name: enrichment_jobs
-        type: directory
-        job_path: jobernetes-etl/2-enrich
+      - name: enrich_multimedia_with_tax
+        job_path: jobernetes-etl/2-enrich/etl-job-add-taxonomy-to-multimedia.yaml
+      - name: enrich_specimen_with_tax
+        job_path: jobernetes-etl/2-enrich/etl-job-add-taxonomy-to-specimens.yaml
+      - name: enrich_speciments_with_multimedia
+        job_path: jobernetes-etl/2-enrich/etl-job-add-multimedia-to-specimens.yaml
+        depends_on:
+          - enrich_specimen_with_tax
 
   - phase_name: extend
     jobs:
