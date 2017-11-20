@@ -30,13 +30,6 @@ spec:
           && tar -xvf nba-source-crs/multimedia.tar -C /data/crs/
           && tar -xvf nba-source-crs/specimens.tar -C /data/crs/
           && rm -fr nba-source-crs
-          #apk add --no-cache git
-          #&& rm -fr /data/crs
-          #&& git clone https://github.com/naturalis/nba-brondata-crs /data/crs -b 2017-10
-          #&& (cd /data/crs ; ./uncompress.sh)
-        env:
-        - name: "BRONDATA_TAG"
-          value: "newly"
         volumeMounts:
         - name: sourcedata-pvc
           mountPath: /data

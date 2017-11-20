@@ -25,9 +25,6 @@ spec:
           && rm -fr /data/medialib
           && git clone https://github.com/naturalis/nba-brondata-medialib /data/medialib -b 2017-10
           && (cd /data/medialib ; ./uncompress.sh)
-        env:
-        - name: "BRONDATA_TAG"
-          value: "2017-10"
         volumeMounts:
         - name: sourcedata-pvc
           mountPath: /data

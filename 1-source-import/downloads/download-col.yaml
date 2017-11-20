@@ -25,9 +25,6 @@ spec:
           && rm -fr /data/col
           && git clone https://github.com/naturalis/nba-brondata-col /data/col -b 2017-07
           && (cd /data/col ; ./uncompress.sh)
-        env:
-        - name: "BRONDATA_TAG"
-          value: "2017-07"
         volumeMounts:
         - name: sourcedata-pvc
           mountPath: /data

@@ -25,9 +25,6 @@ spec:
           && rm -fr /data/brahms
           && git clone https://github.com/naturalis/nba-brondata-brahms /data/brahms -b 2017-10
           && (cd /data/brahms ; ./uncompress.sh)
-        env:
-        - name: "BRONDATA_TAG"
-          value: "2017-10"
         volumeMounts:
         - name: sourcedata-pvc
           mountPath: /data
