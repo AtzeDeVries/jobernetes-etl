@@ -23,7 +23,7 @@ spec:
         - >
           apk add --no-cache git
           && rm -fr /data/medialib
-          && git clone https://github.com/naturalis/nba-brondata-medialib /data/medialib -b 2017-10
+          && git clone https://github.com/naturalis/nba-brondata-medialib /data/medialib -b 2018-01
           && (cd /data/medialib ; ./uncompress.sh)
         volumeMounts:
         - name: sourcedata-pvc

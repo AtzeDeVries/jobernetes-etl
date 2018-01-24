@@ -23,7 +23,7 @@ spec:
         - >
           apk add --no-cache git
           && rm -fr /data/brahms
-          && git clone https://github.com/naturalis/nba-brondata-brahms /data/brahms -b 2017-10
+          && git clone https://github.com/naturalis/nba-brondata-brahms /data/brahms -b 2018-01
           && (cd /data/brahms ; ./uncompress.sh)
         volumeMounts:
         - name: sourcedata-pvc

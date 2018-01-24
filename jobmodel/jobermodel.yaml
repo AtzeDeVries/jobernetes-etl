@@ -4,7 +4,7 @@ jobernetes_config:
   refresh_time: 20
   ssl_insecure_warnings: False
   incluster: True
-  parallelization: 4
+  parallelization: 5
 jobernetes:
   - phase_name: bootstrap
     jobs:
