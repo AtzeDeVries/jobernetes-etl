@@ -15,7 +15,7 @@ spec:
       restartPolicy: Never
       containers:
       - name: etl-col-nullify
-        image: naturalis/nba-etl:V2.11.3_dev-3f613b0
+        image: naturalis/nba-etl:V2.11.3-3f613b0
         env:
         - name: "ES_DNS"
           value: "elasticsearch"

@@ -38,9 +38,9 @@ The part before the `-` is the branch (or tag, if the build is on a tag) and
 after the `-` is the short hash of a commit in the naturalis_data_api repository.
 It makes sense to have versions of the containers the same. A easy way to change all the versions
 is using find and sed
-To change the container version from `V2.11.2-5a9d0f4` to `V2.11.3_dev-3f613b0` run 
+To change the container version from `V2.11.2-5a9d0f4` to `V2.11.3-3f613b0` run 
 ```shell
-find  -type f -print0 | xargs -0 sed -i 's/V2.11.2-5a9d0f4/V2.11.3_dev-3f613b0/g'
+find  -type f -print0 | xargs -0 sed -i 's/V2.11.2-5a9d0f4/V2.11.3-3f613b0/g'
 ```
 This will recursively change all jobs.
 

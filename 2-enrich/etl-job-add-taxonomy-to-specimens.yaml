@@ -15,7 +15,7 @@ spec:
       restartPolicy: Never
       containers:
       - name: etl-add-taxonomy-to-specimens
-        image: naturalis/nba-etl:V2.11.3_dev-3f613b0
+        image: naturalis/nba-etl:V2.11.3-3f613b0
         imagePullPolicy: Always
         command: ["/bin/sh"]
         args:
