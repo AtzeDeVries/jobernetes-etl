@@ -13,71 +13,37 @@ jobernetes:
 
   - phase_name: import_source_systems
     jobs:
-      #downloads
-      - name: download_medialib
-        job_path: jobernetes-etl/1-source-import/downloads/download-medialib.yaml
-      - name: download_brahms
-        job_path: jobernetes-etl/1-source-import/downloads/download-brahms.yaml
-      - name: download_col
-        job_path: jobernetes-etl/1-source-import/downloads/download-col.yaml
-      - name: download_crs
-        job_path: jobernetes-etl/1-source-import/downloads/download-crs.yaml
-      - name: download_nsr
-        job_path: jobernetes-etl/1-source-import/downloads/download-nsr.yaml
-      - name: download_geo
-        job_path: jobernetes-etl/1-source-import/downloads/download-geo.yaml
       #brahms import
       - name: import_brahms_amd
-        job_path: jobernetes-etl/1-source-import/brahms/amd
+        job_path: jobernetes-etl/1-source-import/brahms-amd
         type: directory
-        depends_on:
-          - download_brahms
-          - download_medialib
       - name: import_brahms_l
-        job_path: jobernetes-etl/1-source-import/brahms/l
+        job_path: jobernetes-etl/1-source-import/brahms-l
         type: directory
-        depends_on:
-          - download_brahms
-          - download_medialib
       - name: import_brahms_u
-        job_path: jobernetes-etl/1-source-import/brahms/u
+        job_path: jobernetes-etl/1-source-import/brahms-u
         type: directory
         depends_on:
           - import_brahms_l
       - name: import_brahms_wag
-        job_path: jobernetes-etl/1-source-import/brahms/wag
+        job_path: jobernetes-etl/1-source-import/brahms-wag
         type: directory
         depends_on:
           - import_brahms_u
       #import crs
       - name: import_crs_sp
-        job_path: jobernetes-etl/1-source-import/crs/etl-job-crs-specimens.yaml
-        depends_on:
-          - download_crs
-          - download_medialib
+        job_path: jobernetes-etl/1-source-import/crs/crs-specimens.yaml
       - name: import_crs_mm
-        job_path: jobernetes-etl/1-source-import/crs/etl-job-crs-multimedia.yaml
-        depends_on:
-          - download_crs
-          - download_medialib
+        job_path: jobernetes-etl/1-source-import/crs/crs-multimedia.yaml
       #import col
       - name: import_col
-        job_path: jobernetes-etl/1-source-import/col/etl-job-col.yaml
-        depends_on:
-          - download_col
-          - download_medialib
+        job_path: jobernetes-etl/1-source-import/col/col-taxa.yaml
       #import geo
       - name: import_geo
-        job_path: jobernetes-etl/1-source-import/geo/etl-job-geo.yaml
-        depends_on:
-          - download_geo
-          - download_medialib
+        job_path: jobernetes-etl/1-source-import/geo/geo-areas.yaml
       #import nsr
       - name: import_nsr
-        job_path: jobernetes-etl/1-source-import/nsr/etl-job-nsr.yaml
-        depends_on:
-          - download_nsr
-          - download_medialib
+        job_path: jobernetes-etl/1-source-import/nsr/nsr-taxa.yaml
 
 
   - phase_name: enrichment
