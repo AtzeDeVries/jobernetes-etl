@@ -1,0 +1,2 @@
+extract_wildcard: --wildcards --no-anchored 'WAG*'
+import_command: ./brahms-import specimens

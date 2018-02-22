@@ -1,0 +1,12 @@
+#data_dir: "/payload/data/demo"
+#job_name: demo
+container_version: V2.11.3-3f613b0
+s3_bucket: brondata-unknown
+s3_file: unknown-2011-11-11.tar.gz
+data_dir: /payload/data/demo
+#extract_wildcard: --wildcards --no-anchored 'AMD*'
+extract_wildcard: ""
+s3_medialib_file: medialib-2018-01-20.tar.gz
+import_command: ./import-demo
+jobs_dir: generated
+template_file: import_job.yml.j2

@@ -1,0 +1,2 @@
+extract_wildcard: --wildcards --no-anchored 'L_2*'
+import_command: ./brahms-import multimedia

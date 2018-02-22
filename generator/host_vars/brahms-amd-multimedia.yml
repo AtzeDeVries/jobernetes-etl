@@ -1,0 +1,2 @@
+extract_wildcard: --wildcards --no-anchored 'AMD*'
+import_command: ./brahms-import multimedia

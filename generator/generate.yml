@@ -1,0 +1,17 @@
+---
+- hosts: all
+  gather_facts: false
+  tasks:
+
+  - name: make dir sturcture
+    file:
+      state: directory
+      path: "{{jobs_dir}}/{{group_names[0]|quote}}"
+    delegate_to: localhost
+
+  - name: write template
+    template:
+      src: templates/{{template_file}}
+      dest: "{{jobs_dir}}/{{group_names[0]}}/{{inventory_hostname}}.yml"
+    delegate_to: localhost
+
