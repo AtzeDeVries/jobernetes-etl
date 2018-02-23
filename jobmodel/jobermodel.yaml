@@ -32,18 +32,18 @@ jobernetes:
           - import_brahms_u
       #import crs
       - name: import_crs_sp
-        job_path: jobernetes-etl/1-source-import/crs/crs-specimens.yaml
+        job_path: jobernetes-etl/1-source-import/crs/crs-specimens.yml
       - name: import_crs_mm
-        job_path: jobernetes-etl/1-source-import/crs/crs-multimedia.yaml
+        job_path: jobernetes-etl/1-source-import/crs/crs-multimedia.yml
       #import col
       - name: import_col
-        job_path: jobernetes-etl/1-source-import/col/col-taxa.yaml
+        job_path: jobernetes-etl/1-source-import/col/col-taxa.yml
       #import geo
       - name: import_geo
-        job_path: jobernetes-etl/1-source-import/geo/geo-areas.yaml
+        job_path: jobernetes-etl/1-source-import/geo/geo-areas.yml
       #import nsr
       - name: import_nsr
-        job_path: jobernetes-etl/1-source-import/nsr/nsr-taxa.yaml
+        job_path: jobernetes-etl/1-source-import/nsr/nsr-taxa.yml
 
 
   - phase_name: enrichment
