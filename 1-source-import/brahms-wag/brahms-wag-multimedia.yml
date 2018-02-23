@@ -28,8 +28,8 @@ spec:
           && chmod +x mc
           && ./mc cp s3-nba-brondata/brondata-brahms/brahms-2018-01-26.tar.gz /payload/data/brahms
           && tar -xf /payload/data/brahms/brahms-2018-01-26.tar.gz -C /payload/data/brahms  --wildcards --no-anchored 'WAG*'
-          && ./mc cp s3-nba-brondata/brondata-medialib/medialib-2018-01-20.tar.gz /data/payload/medialib
-          && tar -xf /payload/data/medialib/medialib-2018-01-20.tar.gz -C /data/payload/medialib
+          && ./mc cp s3-nba-brondata/brondata-medialib/medialib-2018-01-18.tar.gz /data/payload/medialib
+          && tar -xf /payload/data/medialib/medialib-2018-01-18.tar.gz -C /data/payload/medialib
           && ./brahms-import multimedia ; result=$?
           && gzip /payload/software/log/*.log
           && ./mc cp /payload/software/log/*.gz s3-nba-brondata/import-logs

@@ -26,10 +26,10 @@ spec:
           && sed -i "s/truncate=true/truncate=false/g" /payload/software/sh/include.sh
           && wget -q https://dl.minio.io/client/mc/release/linux-amd64/mc
           && chmod +x mc
-          && ./mc cp s3-nba-brondata/brondata-unknown/unknown-2011-11-11.tar.gz /payload/data/demo
-          && tar -xf /payload/data/demo/unknown-2011-11-11.tar.gz -C /payload/data/demo  
-          && ./mc cp s3-nba-brondata/brondata-medialib/medialib-2018-01-20.tar.gz /data/payload/medialib
-          && tar -xf /payload/data/medialib/medialib-2018-01-20.tar.gz -C /data/payload/medialib
+          && ./mc cp s3-nba-brondata/brondata-crs/crs-specimens-2018-02-12.tar.gz /payload/data/crs
+          && tar -xf /payload/data/crs/crs-specimens-2018-02-12.tar.gz -C /payload/data/crs  
+          && ./mc cp s3-nba-brondata/brondata-medialib/medialib-2018-01-18.tar.gz /data/payload/medialib
+          && tar -xf /payload/data/medialib/medialib-2018-01-18.tar.gz -C /data/payload/medialib
           && ./crs-import specimens ; result=$?
           && gzip /payload/software/log/*.log
           && ./mc cp /payload/software/log/*.gz s3-nba-brondata/import-logs
@@ -43,7 +43,7 @@ spec:
         - name: logdir
           mountPath: /payload/software/log
         - name: datadir
-          mountPath: /payload/data/demo
+          mountPath: /payload/data/crs
         - name: mediadir
           mountPath: /payload/data/medialib
         - name: etl-nba-properties
