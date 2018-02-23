@@ -26,8 +26,8 @@ spec:
           && sed -i "s/truncate=true/truncate=false/g" /payload/software/sh/include.sh
           && wget -q https://dl.minio.io/client/mc/release/linux-amd64/mc
           && chmod +x mc
-          && ./mc cp s3-nba-brondata/brondata-geo/goe-2018-02-08.tar.gz /payload/data/geo
-          && tar -xf /payload/data/geo/goe-2018-02-08.tar.gz -C /payload/data/geo  
+          && ./mc cp s3-nba-brondata/brondata-geo/geo-2018-02-08.tar.gz /payload/data/geo
+          && tar -xf /payload/data/geo/geo-2018-02-08.tar.gz -C /payload/data/geo  
           && ./mc cp s3-nba-brondata/brondata-medialib/medialib-2018-01-18.tar.gz /payload/data/medialib
           && tar -xf /payload/data/medialib/medialib-2018-01-18.tar.gz -C /payload/data/medialib
           && ./geo-import ; result=$?
