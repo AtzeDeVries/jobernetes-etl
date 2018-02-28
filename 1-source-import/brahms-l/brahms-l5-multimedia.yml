@@ -27,7 +27,7 @@ spec:
           && wget -q https://dl.minio.io/client/mc/release/linux-amd64/mc
           && chmod +x mc
           && ./mc cp s3-nba-brondata/brondata-brahms/brahms-2018-01-26.tar.gz /payload/data/brahms
-          && tar -xf /payload/data/brahms/brahms-2018-01-26.tar.gz -C /payload/data/brahms  --wildcards --no-anchored 'L_4*'
+          && tar -xf /payload/data/brahms/brahms-2018-01-26.tar.gz -C /payload/data/brahms  --wildcards --no-anchored 'L_5*'
           && ./mc cp s3-nba-brondata/brondata-medialib/medialib-2018-01-18.tar.gz /payload/data/medialib
           && tar -xf /payload/data/medialib/medialib-2018-01-18.tar.gz -C /payload/data/medialib
           && ./brahms-import multimedia ; result=$?
