@@ -1,7 +1,7 @@
 apiVersion: v1
 data:
   nba.properties: |
-    elasticsearch.cluster.name=nba-cluster
+    elasticsearch.cluster.name=myesdb
     elasticsearch.transportaddress.host=elasticsearch
     elasticsearch.transportaddress.port=9300
     elasticsearch.index.default.shards=16

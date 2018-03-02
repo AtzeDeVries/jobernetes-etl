@@ -23,8 +23,8 @@ spec:
         - >
           ./bootstrap --all
         volumeMounts:
-        - name: nfs-pvc
-          mountPath: /payload/software/log
+          #        - name: nfs-pvc
+          #          mountPath: /payload/software/log
         - name: etl-nba-properties
           mountPath: /payload/software/conf/nba.properties
           subPath: nba.properties
@@ -32,9 +32,9 @@ spec:
           mountPath: /payload/software/conf/log4j2.xml
           subPath: log4j2.xml
       volumes:
-      - name: nfs-pvc
-        persistentVolumeClaim:
-          claimName: nfslog
+        #      - name: nfs-pvc
+        #        persistentVolumeClaim:
+        #          claimName: nfslog
       - name: etl-nba-properties
         configMap:
           name: etl.nba.properties
