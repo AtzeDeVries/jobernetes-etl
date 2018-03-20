@@ -1,0 +1,25 @@
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: etl-snapshot
+  labels:
+    app: etl-snapshot
+spec:
+  template:
+    metadata:
+      name: etl-snapshot
+      labels:
+        app: etl-snapshot
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: etl-snapshot
+        image: appropriate/curl
+        imagePullPolicy: Always
+        args:
+        - -XPUT
+        - 'http://elasticsearch-data:9200/_snapshot/nba-import-snapshots/nba-import-2018-03-20?wait_for_completion=true'
+        - -d
+        - '{ "indices": "specimen,taxon,multimedia,geoareas,storageunits,meta" }'
+

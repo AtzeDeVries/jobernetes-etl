@@ -9,65 +9,66 @@ jobernetes:
   - phase_name: bootstrap
     jobs:
       - name: create_indices
-        job_path: jobernetes-etl/0-prepare/etl-bootstrap.yaml
+        job_path: jobernetes-etl/bootstrap/bootstrap-nds.yml
 
   - phase_name: import_source_systems
     jobs:
       #brahms import
       - name: import_brahms_amd
-        job_path: jobernetes-etl/1-source-import/brahms-amd
+        job_path: jobernetes-etl/brahms-amd
         type: directory
       - name: import_brahms_l
-        job_path: jobernetes-etl/1-source-import/brahms-l
+        job_path: jobernetes-etl/brahms-l
         type: directory
       - name: import_brahms_u
-        job_path: jobernetes-etl/1-source-import/brahms-u
+        job_path: jobernetes-etl/brahms-u
         type: directory
         depends_on:
           - import_brahms_l
       - name: import_brahms_wag
-        job_path: jobernetes-etl/1-source-import/brahms-wag
+        job_path: jobernetes-etl/brahms-wag
         type: directory
         depends_on:
           - import_brahms_u
       #import crs
       - name: import_crs_sp
-        job_path: jobernetes-etl/1-source-import/crs/crs-specimens.yml
+        job_path: jobernetes-etl/crs/crs-specimens.yml
       - name: import_crs_mm
-        job_path: jobernetes-etl/1-source-import/crs/crs-multimedia.yml
+        job_path: jobernetes-etl/crs/crs-multimedia.yml
       #import col
       - name: import_col
-        job_path: jobernetes-etl/1-source-import/col/col-taxa.yml
+        job_path: jobernetes-etl/col/col-taxa.yml
       #import geo
       - name: import_geo
-        job_path: jobernetes-etl/1-source-import/geo/geo-areas.yml
+        job_path: jobernetes-etl/geo/geo-areas.yml
       #import nsr
       - name: import_nsr
-        job_path: jobernetes-etl/1-source-import/nsr/nsr-taxa.yml
+        job_path: jobernetes-etl/nsr/nsr-taxa.yml
 
 
   - phase_name: enrichment
     jobs:
       - name: enrich_multimedia_with_tax
-        job_path: jobernetes-etl/2-enrich/etl-job-add-taxonomy-to-multimedia.yaml
+        job_path: jobernetes-etl/enrich/job-add-taxonomy-to-multimedia.yaml
       - name: enrich_specimen_with_tax
-        job_path: jobernetes-etl/2-enrich/etl-job-add-taxonomy-to-specimens.yaml
+        job_path: jobernetes-etl/enrich/job-add-taxonomy-to-specimens.yaml
       - name: enrich_speciments_with_multimedia
-        job_path: jobernetes-etl/2-enrich/etl-job-add-multimedia-to-specimens.yaml
+        job_path: jobernetes-etl/enrich/job-add-multimedia-to-specimens.yaml
         depends_on:
           - enrich_specimen_with_tax
 
   - phase_name: extend
     jobs:
       - name: extend_data
-        job_path: jobernetes-etl/3-extend/etl-job-storageunits.yaml
+        job_path: jobernetes-etl/extend
+        type: directory
 
   - phase_name: post_jobs
     jobs:
       - name: force_merge
-        job_path: jobernetes-etl/4-postjobs/etl-forcemerge.yaml
+        job_path: jobernetes-etl/merge/force-merge.yaml
 
   - phase_name: snapshot
     jobs:
       - name: take_snapshot
-        job_path: jobernetes-etl/5-snapshot/etl-snapshot.yaml
+        job_path: jobernetes-etl/snapshot/take-snapshot.yaml

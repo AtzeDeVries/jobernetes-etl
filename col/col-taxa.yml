@@ -2,20 +2,20 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: etl-{{inventory_hostname}}
+  name: etl-col-taxa
   labels:
-    app: etl-{{inventory_hostname}}
+    app: etl-col-taxa
 spec:
   template:
     metadata:
-      name: etl-{{inventory_hostname}}
+      name: etl-col-taxa
       labels:
-        app: etl-{{inventory_hostname}}
+        app: etl-col-taxa
     spec:
       restartPolicy: Never
       containers:
-      - name: etl-{{inventory_hostname}}
-        image: naturalis/nba-etl:{{container_version}}
+      - name: etl-col-taxa
+        image: naturalis/nba-etl:V2.11.3-3f613b0
         imagePullPolicy: Always
         command: ["/bin/bash"]
         args:
@@ -26,13 +26,13 @@ spec:
           && sed -i "s/truncate=true/truncate=false/g" /payload/software/sh/include.sh
           && wget -q https://dl.minio.io/client/mc/release/linux-amd64/mc
           && chmod +x mc
-          && ./mc cp s3-nba-brondata/{{s3_bucket}}/{{s3_file}} {{data_dir}}
-          && tar -xf {{data_dir}}/{{s3_file}} -C {{data_dir}}  {{extract_wildcard}}
-          && ./mc cp s3-nba-brondata/brondata-medialib/{{s3_medialib_file}} /payload/data/medialib
-          && tar -xf /payload/data/medialib/{{s3_medialib_file}} -C /payload/data/medialib
-          && {{import_command}} ; result=$?
+          && ./mc cp s3-nba-brondata/brondata-col/col-2017.tar.gz /payload/data/col
+          && tar -xf /payload/data/col/col-2017.tar.gz -C /payload/data/col  
+          && ./mc cp s3-nba-brondata/brondata-medialib/medialib-2018-01-18.tar.gz /payload/data/medialib
+          && tar -xf /payload/data/medialib/medialib-2018-01-18.tar.gz -C /payload/data/medialib
+          && ./col-import ; result=$?
           && gzip /payload/software/log/*.log
-          && ./mc cp /payload/software/log/*.gz s3-nba-brondata/import-logs/{{current_date.stdout}}/$(date +'%Y.%m.%d-%H.%M.%S')-{{inventory_hostname}}.log.gz
+          && ./mc cp /payload/software/log/*.gz s3-nba-brondata/import-logs/2018-03-20/$(date +'%Y.%m.%d-%H.%M.%S')-col-taxa.log.gz
           && exit $result
         env:
         - name: "LOG_LEVEL"
@@ -43,7 +43,7 @@ spec:
         - name: logdir
           mountPath: /payload/software/log
         - name: datadir
-          mountPath: {{data_dir}}
+          mountPath: /payload/data/col
         - name: mediadir
           mountPath: /payload/data/medialib
         - name: etl-nba-properties

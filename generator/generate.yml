@@ -3,6 +3,13 @@
   gather_facts: false
   tasks:
 
+  - name: set date
+    shell: date +'%Y-%m-%d'
+    register: current_date
+    run_once: true
+    delegate_to: localhost
+    changed_when: false
+
   - name: make dir sturcture
     file:
       state: directory
@@ -15,14 +22,9 @@
       dest: "{{jobs_dir}}/{{group_names[0]}}/{{inventory_hostname}}.yml"
     delegate_to: localhost
 
-- hosts: localhost
-  gather_facts: false
-  tasks:
-  - name: dump_vars
+  - name: debug
     debug:
-      var: hostvars[groups[{{item}}][0]].s3_file
+      msg: "{{ hostvars['brahms-l6-specimens']['s3_file'] }}"
     tags:
-      - dump
-    with_items: "{{ hostvars['all'].group_names }}"
-
-
+      - vars
+    delegate_to: localhost

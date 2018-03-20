@@ -1,0 +1,49 @@
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: etl-add-taxonomy-to-multimedia
+  labels:
+    app: etl-add-taxonomy-to-multimedia
+spec:
+  template:
+    metadata:
+      name: etl-add-taxonomy-to-multimedia
+      labels:
+        app: etl-add-taxonomy-to-multimedia
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: etl-add-taxonomy-to-multimedia
+        image: naturalis/nba-etl:V2.11.3-3f613b0
+        imagePullPolicy: Always
+        command: ["/bin/sh"]
+        args:
+        - "-c"
+        - >
+				  set -x
+          && sed -i 's/read_batch_size=1000/read_batch_size=500/g' add-taxonomy-to-multimedia
+          && wget -q https://dl.minio.io/client/mc/release/linux-amd64/mc
+          && chmod +x mc
+          && ./add-taxonomy-to-multimedia ; result=$?
+          && gzip /payload/software/log/*.log
+          && ./mc cp /payload/software/log/*.gz s3-nba-brondata/import-logs/2018-03-20/$(date +'%Y.%m.%d-%H.%M.%S')-add-taxonomy-to-multimedia.log.gz
+          && exit $result
+        volumeMounts:
+        - name: logdir
+          mountPath: /payload/software/log
+        - name: etl-nba-properties
+          mountPath: /payload/software/conf/nba.properties
+          subPath: nba.properties
+        - name: etl-log4j2-xml
+          mountPath: /payload/software/conf/log4j2.xml
+          subPath: log4j2.xml
+      volumes:
+      - name: logdir
+        emptyDir: {}
+      - name: etl-nba-properties
+        configMap:
+          name: etl.nba.properties
+      - name: etl-log4j2-xml
+        configMap:
+          name: etl.log4j2.xml

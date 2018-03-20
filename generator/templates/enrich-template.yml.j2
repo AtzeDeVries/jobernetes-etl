@@ -17,49 +17,28 @@ spec:
       - name: etl-{{inventory_hostname}}
         image: naturalis/nba-etl:{{container_version}}
         imagePullPolicy: Always
-        command: ["/bin/bash"]
+        command: ["/bin/sh"]
         args:
         - "-c"
         - >
-          set -x
-          && sed -i "s/#test_genera.*/$TEST_GENERA/g" /payload/software/sh/include.sh
-          && sed -i "s/truncate=true/truncate=false/g" /payload/software/sh/include.sh
+				  set -x
+          && sed -i 's/read_batch_size=1000/read_batch_size=500/g' {{inventory_hostname}}
           && wget -q https://dl.minio.io/client/mc/release/linux-amd64/mc
           && chmod +x mc
-          && ./mc cp s3-nba-brondata/{{s3_bucket}}/{{s3_file}} {{data_dir}}
-          && tar -xf {{data_dir}}/{{s3_file}} -C {{data_dir}}  {{extract_wildcard}}
-          && ./mc cp s3-nba-brondata/brondata-medialib/{{s3_medialib_file}} /payload/data/medialib
-          && tar -xf /payload/data/medialib/{{s3_medialib_file}} -C /payload/data/medialib
-          && {{import_command}} ; result=$?
+          && ./{{inventory_hostname}} ; result=$?
           && gzip /payload/software/log/*.log
           && ./mc cp /payload/software/log/*.gz s3-nba-brondata/import-logs/{{current_date.stdout}}/$(date +'%Y.%m.%d-%H.%M.%S')-{{inventory_hostname}}.log.gz
           && exit $result
-        env:
-        - name: "LOG_LEVEL"
-          value: "INFO"
-        - name: "TEST_GENERA"
-          value: "#test_genera=malus,parus,larus,bombus,rhododendron,felix,tulipa,rosa,canis,passer,trientalis"
         volumeMounts:
         - name: logdir
           mountPath: /payload/software/log
-        - name: datadir
-          mountPath: {{data_dir}}
-        - name: mediadir
-          mountPath: /payload/data/medialib
         - name: etl-nba-properties
           mountPath: /payload/software/conf/nba.properties
           subPath: nba.properties
         - name: etl-log4j2-xml
           mountPath: /payload/software/conf/log4j2.xml
           subPath: log4j2.xml
-        - name: mc-s3-nba-brondata-config
-          mountPath: /root/.mc/config.json
-          subPath: config.json
       volumes:
-      - name: datadir
-        emptyDir: {}
-      - name: mediadir
-        emptyDir: {}
       - name: logdir
         emptyDir: {}
       - name: etl-nba-properties
@@ -68,7 +47,3 @@ spec:
       - name: etl-log4j2-xml
         configMap:
           name: etl.log4j2.xml
-      - name: mc-s3-nba-brondata-config
-        configMap:
-          name: mc-s3-nba-brondata-config
-

@@ -37,3 +37,20 @@ col-taxa
 [geo]
 geo-areas
 
+[snapshot]
+take-snapshot
+
+[enrich]
+add-multimedia-to-specimens
+add-taxonomy-to-multimedia
+add-taxonomy-to-specimens
+
+[bootstrap]
+bootstrap-nds
+
+[merge]
+force-merge
+
+[extend]
+storage-units
+meta-data
