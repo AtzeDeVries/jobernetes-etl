@@ -49,11 +49,11 @@ jobernetes:
   - phase_name: enrichment
     jobs:
       - name: enrich_multimedia_with_tax
-        job_path: jobernetes-etl/enrich/job-add-taxonomy-to-multimedia.yaml
+        job_path: jobernetes-etl/enrich/add-taxonomy-to-multimedia.yml
       - name: enrich_specimen_with_tax
-        job_path: jobernetes-etl/enrich/job-add-taxonomy-to-specimens.yaml
+        job_path: jobernetes-etl/enrich/add-taxonomy-to-specimens.yml
       - name: enrich_speciments_with_multimedia
-        job_path: jobernetes-etl/enrich/job-add-multimedia-to-specimens.yaml
+        job_path: jobernetes-etl/enrich/add-multimedia-to-specimens.yml
         depends_on:
           - enrich_specimen_with_tax
 
@@ -66,9 +66,9 @@ jobernetes:
   - phase_name: post_jobs
     jobs:
       - name: force_merge
-        job_path: jobernetes-etl/merge/force-merge.yaml
+        job_path: jobernetes-etl/merge/force-merge.yml
 
   - phase_name: snapshot
     jobs:
       - name: take_snapshot
-        job_path: jobernetes-etl/snapshot/take-snapshot.yaml
+        job_path: jobernetes-etl/snapshot/take-snapshot.yml
