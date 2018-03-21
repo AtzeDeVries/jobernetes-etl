@@ -26,13 +26,13 @@ spec:
           && sed -i "s/truncate=true/truncate=false/g" /payload/software/sh/include.sh
           && wget -q https://dl.minio.io/client/mc/release/linux-amd64/mc
           && chmod +x mc
-          && ./mc cp s3-nba-brondata/brondata-crs/crs-specimens-2018-02-12.tar.gz /payload/data/crs
+          && ./mc --config-folder /mc cp s3-nba-brondata/brondata-crs/crs-specimens-2018-02-12.tar.gz /payload/data/crs
           && tar -xf /payload/data/crs/crs-specimens-2018-02-12.tar.gz -C /payload/data/crs  
-          && ./mc cp s3-nba-brondata/brondata-medialib/medialib-2018-01-18.tar.gz /payload/data/medialib
+          && ./mc --config-folder /mc cp s3-nba-brondata/brondata-medialib/medialib-2018-01-18.tar.gz /payload/data/medialib
           && tar -xf /payload/data/medialib/medialib-2018-01-18.tar.gz -C /payload/data/medialib
           && ./crs-import specimens ; result=$?
           && gzip /payload/software/log/*.log
-          && ./mc cp /payload/software/log/*.gz s3-nba-brondata/import-logs/2018-03-21/$(date +'%Y.%m.%d-%H.%M.%S')-crs-specimens.log.gz
+          && ./mc --config-folder /mc cp /payload/software/log/*.gz s3-nba-brondata/import-logs/2018-03-21/$(date +'%Y.%m.%d-%H.%M.%S')-crs-specimens.log.gz
           && exit $result
         env:
         - name: "LOG_LEVEL"
@@ -53,8 +53,7 @@ spec:
           mountPath: /payload/software/conf/log4j2.xml
           subPath: log4j2.xml
         - name: mc-s3-nba-brondata-config
-          mountPath: /root/.mc/config.json
-          subPath: config.json
+          mountPath: /mc
       volumes:
       - name: datadir
         emptyDir: {}

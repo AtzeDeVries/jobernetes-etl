@@ -26,7 +26,7 @@ spec:
           && chmod +x mc
           && ./bootstrap --all ; result=$?
           && gzip /payload/software/log/*.log
-          && ./mc cp /payload/software/log/*.gz s3-nba-brondata/import-logs/{{current_date.stdout}}/$(date +'%Y.%m.%d-%H.%M.%S')-{{inventory_hostname}}.log.gz
+          && ./mc --config-folder /mc cp /payload/software/log/*.gz s3-nba-brondata/import-logs/{{current_date.stdout}}/$(date +'%Y.%m.%d-%H.%M.%S')-{{inventory_hostname}}.log.gz
           && exit $result
         volumeMounts:
         - name: logdir
@@ -38,8 +38,7 @@ spec:
           mountPath: /payload/software/conf/log4j2.xml
           subPath: log4j2.xml
         - name: mc-s3-nba-brondata-config
-          mountPath: /root/.mc/config.json
-          subPath: config.json
+          mountPath: /mc
       volumes:
       - name: etl-nba-properties
         configMap:
