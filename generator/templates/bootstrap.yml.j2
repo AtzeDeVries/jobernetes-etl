@@ -37,6 +37,9 @@ spec:
         - name: etl-log4j2-xml
           mountPath: /payload/software/conf/log4j2.xml
           subPath: log4j2.xml
+        - name: mc-s3-nba-brondata-config
+          mountPath: /root/.mc/config.json
+          subPath: config.json
       volumes:
       - name: etl-nba-properties
         configMap:
@@ -46,3 +49,6 @@ spec:
           name: etl.log4j2.xml
       - name: logdir
         emptyDir: {}
+      - name: mc-s3-nba-brondata-config
+        configMap:
+          name: mc-s3-nba-brondata-config
