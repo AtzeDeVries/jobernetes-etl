@@ -21,7 +21,7 @@ spec:
         args:
         - "-c"
         - >
-				  set -x
+          set -x
           && sed -i 's/read_batch_size=1000/read_batch_size=500/g' {{inventory_hostname}}
           && wget -q https://dl.minio.io/client/mc/release/linux-amd64/mc
           && chmod +x mc

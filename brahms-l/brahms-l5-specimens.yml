@@ -32,7 +32,7 @@ spec:
           && tar -xf /payload/data/medialib/medialib-2018-01-18.tar.gz -C /payload/data/medialib
           && ./brahms-import specimens ; result=$?
           && gzip /payload/software/log/*.log
-          && ./mc cp /payload/software/log/*.gz s3-nba-brondata/import-logs/2018-03-20/$(date +'%Y.%m.%d-%H.%M.%S')-brahms-l5-specimens.log.gz
+          && ./mc cp /payload/software/log/*.gz s3-nba-brondata/import-logs/2018-03-21/$(date +'%Y.%m.%d-%H.%M.%S')-brahms-l5-specimens.log.gz
           && exit $result
         env:
         - name: "LOG_LEVEL"

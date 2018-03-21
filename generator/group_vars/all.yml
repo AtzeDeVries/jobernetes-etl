@@ -8,5 +8,5 @@ data_dir: /payload/data/demo
 extract_wildcard: ""
 s3_medialib_file: medialib-2018-01-18.tar.gz
 import_command: ./import-demo
-jobs_dir: generated
+jobs_dir: ../
 template_file: import_job.yml.j2

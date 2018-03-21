@@ -21,13 +21,13 @@ spec:
         args:
         - "-c"
         - >
-				  set -x
+          set -x
           && sed -i 's/read_batch_size=1000/read_batch_size=500/g' add-taxonomy-to-specimens
           && wget -q https://dl.minio.io/client/mc/release/linux-amd64/mc
           && chmod +x mc
           && ./add-taxonomy-to-specimens ; result=$?
           && gzip /payload/software/log/*.log
-          && ./mc cp /payload/software/log/*.gz s3-nba-brondata/import-logs/2018-03-20/$(date +'%Y.%m.%d-%H.%M.%S')-add-taxonomy-to-specimens.log.gz
+          && ./mc cp /payload/software/log/*.gz s3-nba-brondata/import-logs/2018-03-21/$(date +'%Y.%m.%d-%H.%M.%S')-add-taxonomy-to-specimens.log.gz
           && exit $result
         volumeMounts:
         - name: logdir
