@@ -1,2 +1,2 @@
-s3_file: crs-specimens-2018-02-12.tar.gz
+s3_file: crs-specimens-2018-04-25.tar.gz
 import_command: ./crs-import specimens

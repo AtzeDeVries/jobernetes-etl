@@ -51,6 +51,9 @@ bootstrap-nds
 [merge]
 force-merge
 
+[log-parser]
+log-extender
+
 [extend]
 storage-units
 meta-data

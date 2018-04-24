@@ -63,6 +63,12 @@ jobernetes:
         job_path: jobernetes-etl/extend
         type: directory
 
+  - phase_name: extend_logs
+    jobs:
+      - name: log_extender
+        job_path: jobernetes-etl/log-parser
+        type: directory
+
   - phase_name: post_jobs
     jobs:
       - name: force_merge

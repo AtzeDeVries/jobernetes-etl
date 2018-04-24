@@ -1,0 +1,42 @@
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: log-parser
+  labels:
+    app: log-parser
+spec:
+  template:
+    metadata:
+      name: log-parser
+      labels:
+        app: log-parser
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: log-parser
+        image: naturalis/nba-log-parser:v0.0.1
+        imagePullPolicy: Always
+        command: ["/bin/bash"]
+        args:
+        - "-c"
+        - >
+          set -x
+          && wget -q https://dl.minio.io/client/mc/release/linux-amd64/mc
+          && chmod +x mc
+          && ./mc --config-folder /mc cp --recursive s3-nba-brondata/import-logs/2018-04-24/ /logs
+          && /nba-log-parser
+          && php index.php
+          && cd /
+          && ./mc --config-folder /mc cp --recursive /logs/ s3-nba-brondata/import-logs/2018-04-24/
+        volumeMounts:
+        - name: datadir
+          mountPath: /logs
+        - name: mc-s3-nba-brondata-config
+          mountPath: /mc
+      volumes:
+      - name: datadir
+        emptyDir: {}
+      - name: mc-s3-nba-brondata-config
+        configMap:
+          name: mc-s3-nba-brondata-config
