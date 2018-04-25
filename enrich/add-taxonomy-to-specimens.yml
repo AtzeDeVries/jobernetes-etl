@@ -27,7 +27,7 @@ spec:
           && chmod +x mc
           && ./add-taxonomy-to-specimens ; result=$?
           && gzip /payload/software/log/*.log
-          && ./mc --config-folder /mc cp /payload/software/log/*.gz s3-nba-brondata/import-logs/2018-04-24/$(date +'%Y.%m.%d-%H.%M.%S')-add-taxonomy-to-specimens.log.gz
+          && ./mc --config-folder /mc cp /payload/software/log/*.gz s3-nba-brondata/import-logs/2018-04-25/$(date +'%Y.%m.%d-%H.%M.%S')-add-taxonomy-to-specimens.log.gz
           && exit $result
         volumeMounts:
         - name: logdir
