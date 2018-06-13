@@ -1,6 +1,6 @@
 #data_dir: "/payload/data/demo"
 #job_name: demo
-container_version: V2.13-9446854
+container_version: V2.15_dev_NBAX-148-153-7742fb7
 s3_bucket: brondata-unknown
 s3_file: unknown-2011-11-11.tar.gz
 data_dir: /payload/data/demo
