@@ -28,7 +28,7 @@ spec:
           && cd /nba-log-parser
           && php index.php
           && cd /
-          && ./mc --config-folder /mc-config cp --recursive /logs/ s3-nba-brondata/import-logs/2018-06-13/
+          && ./mc --config-folder /mc-config cp --recursive /logs/ s3-nba-brondata/import-logs/2018-06-13
         volumeMounts:
         - name: datadir
           mountPath: /logs
