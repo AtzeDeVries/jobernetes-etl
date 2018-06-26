@@ -32,7 +32,7 @@ spec:
           && tar -xf /payload/data/medialib/medialib-2018-04-24.tar.gz -C /payload/data/medialib
           && ./crs-import multimedia ; result=$?
           && gzip /payload/software/log/*.log
-          && ./mc --config-folder /mc cp /payload/software/log/*.gz s3-nba-brondata/import-logs/2018-06-25/$(date +'%Y.%m.%d-%H.%M.%S')-crs-multimedia.log.gz
+          && ./mc --config-folder /mc cp /payload/software/log/*.gz s3-nba-brondata/import-logs/2018-06-26/$(date +'%Y.%m.%d-%H.%M.%S')-crs-multimedia.log.gz
           && exit $result
         env:
         - name: "LOG_LEVEL"
