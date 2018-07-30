@@ -26,13 +26,13 @@ spec:
           && sed -i "s/truncate=true/truncate=false/g" /payload/software/sh/include.sh
           && wget -q https://dl.minio.io/client/mc/release/linux-amd64/mc
           && chmod +x mc
-          && ./mc --config-folder /mc cp s3-nba-brondata/brondata-nsr/nsr-2018-04-21.tar.gz /payload/data/nsr
-          && tar -xf /payload/data/nsr/nsr-2018-04-21.tar.gz -C /payload/data/nsr  
-          && ./mc --config-folder /mc cp s3-nba-brondata/brondata-medialib/medialib-2018-04-24.tar.gz /payload/data/medialib
-          && tar -xf /payload/data/medialib/medialib-2018-04-24.tar.gz -C /payload/data/medialib
+          && ./mc --config-folder /mc cp s3-nba-brondata/brondata-nsr/nsr-2018-07-22.tar.gz /payload/data/nsr
+          && tar -xf /payload/data/nsr/nsr-2018-07-22.tar.gz -C /payload/data/nsr  
+          && ./mc --config-folder /mc cp s3-nba-brondata/brondata-medialib/medialib-2018-07-30.tar.gz /payload/data/medialib
+          && tar -xf /payload/data/medialib/medialib-2018-07-30.tar.gz -C /payload/data/medialib
           && ./nsr-import ; result=$?
           && gzip /payload/software/log/*.log
-          && ./mc --config-folder /mc cp /payload/software/log/*.gz s3-nba-brondata/import-logs/2018-06-26/$(date +'%Y.%m.%d-%H.%M.%S')-nsr-taxa.log.gz
+          && ./mc --config-folder /mc cp /payload/software/log/*.gz s3-nba-brondata/import-logs/2018-07-30/$(date +'%Y.%m.%d-%H.%M.%S')-nsr-taxa.log.gz
           && exit $result
         env:
         - name: "LOG_LEVEL"
