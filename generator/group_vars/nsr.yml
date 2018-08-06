@@ -1,4 +1,4 @@
 data_dir: /payload/data/nsr
 s3_bucket: brondata-nsr
-s3_file: nsr-2018-07-22.tar.gz
+s3_file: nsr-2018-08-05.tar.gz
 import_command: ./nsr-import

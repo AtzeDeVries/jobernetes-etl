@@ -34,8 +34,8 @@ spec:
             "crs_multimedia_sourcefile" : "crs-multimedia-2018-07-30.tar.gz",
             "col_source_file" : "col-2017.tar.gz",
             "geo_source_file" : "geo-2018-02-08.tar.gz",
-            "nsr_source_file" : "nsr-2018-07-22.tar.gz",
-            "etl_version" : "V2.15_dev-cc75b87",
+            "nsr_source_file" : "nsr-2018-08-05.tar.gz",
+            "etl_version" : "V2.17_dev-957bd89",
             "medialib_cache_sourcefile" : "medialib-2018-07-30.tar.gz",
-            "import_date" : "2018-07-30"
+            "import_date" : "2018-08-06"
            }'
