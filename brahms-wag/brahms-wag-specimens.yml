@@ -15,7 +15,7 @@ spec:
       restartPolicy: Never
       containers:
       - name: etl-brahms-wag-specimens
-        image: naturalis/nba-etl:V2.17_dev-957bd89
+        image: naturalis/nba-etl:V2.17_dev_maven_build-124d6c7
         imagePullPolicy: Always
         command: ["/bin/bash"]
         args:
@@ -32,7 +32,7 @@ spec:
           && tar -xf /payload/data/medialib/medialib-2018-07-30.tar.gz -C /payload/data/medialib
           && ./brahms-import specimens ; result=$?
           && gzip /payload/software/log/*.log
-          && ./mc --config-folder /mc cp /payload/software/log/*.gz s3-nba-brondata/import-logs/2018-09-11/$(date +'%Y.%m.%d-%H.%M.%S')-brahms-wag-specimens.log.gz
+          && ./mc --config-folder /mc cp /payload/software/log/*.gz s3-nba-brondata/import-logs/2018-09-17/$(date +'%Y.%m.%d-%H.%M.%S')-brahms-wag-specimens.log.gz
           && exit $result
         env:
         - name: "LOG_LEVEL"
