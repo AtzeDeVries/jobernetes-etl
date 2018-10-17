@@ -1,0 +1,2 @@
+s3_file: wrnnl-specimens-2018-10-17.tar.gz
+import_command: ./json-import specimen

@@ -13,6 +13,14 @@ jobernetes:
 
   - phase_name: import_source_systems
     jobs:
+      #import xc
+      - name: import_xc
+        job_path: jobernetes-etl/xc/xc-specimens.yml
+      - name: import_crs_mm
+        job_path: jobernetes-etl/xc/xc-multimedia.yml
+      #import wrnnl
+      - name: import_wrnnl
+        job_path: jobernetes-etl/wrnnl/wrnnl-specimens.yml
       #brahms import
       - name: import_brahms_amd
         job_path: jobernetes-etl/brahms-amd
