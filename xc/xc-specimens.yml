@@ -36,7 +36,7 @@ spec:
           && exit $result
         env:
         - name: "LOG_LEVEL"
-          value: "INFO"
+          value: "DEBUG"
         - name: "TEST_GENERA"
           value: "#test_genera=malus,parus,larus,bombus,rhododendron,felix,tulipa,rosa,canis,passer,trientalis"
         volumeMounts:
