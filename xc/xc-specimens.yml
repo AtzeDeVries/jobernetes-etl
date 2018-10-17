@@ -26,8 +26,8 @@ spec:
           && sed -i "s/truncate=true/truncate=false/g" /payload/software/sh/include.sh
           && wget -q https://dl.minio.io/client/mc/release/linux-amd64/mc
           && chmod +x mc
-          && ./mc --config-folder /mc cp s3-nba-brondata/brondata-xc/xc-specimens-2018-10-15.tar.gz /payload/data/json
-          && tar -xf /payload/data/json/xc-specimens-2018-10-15.tar.gz -C /payload/data/json  
+          && ./mc --config-folder /mc cp s3-nba-brondata/brondata-xc/xc-specimens-2018-10-15.tar.gz /payload/data/json/specimen
+          && tar -xf /payload/data/json/specimen/xc-specimens-2018-10-15.tar.gz -C /payload/data/json/specimen  
           && ./mc --config-folder /mc cp s3-nba-brondata/brondata-medialib/medialib-2018-07-30.tar.gz /payload/data/medialib
           && tar -xf /payload/data/medialib/medialib-2018-07-30.tar.gz -C /payload/data/medialib
           && ./json-import specimen ; result=$?
@@ -36,14 +36,14 @@ spec:
           && exit $result
         env:
         - name: "LOG_LEVEL"
-          value: "DEBUG"
+          value: "INFO"
         - name: "TEST_GENERA"
           value: "#test_genera=malus,parus,larus,bombus,rhododendron,felix,tulipa,rosa,canis,passer,trientalis"
         volumeMounts:
         - name: logdir
           mountPath: /payload/software/log
         - name: datadir
-          mountPath: /payload/data/json
+          mountPath: /payload/data/json/specimen
         - name: mediadir
           mountPath: /payload/data/medialib
         - name: etl-nba-properties

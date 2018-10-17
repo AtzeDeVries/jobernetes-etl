@@ -26,8 +26,8 @@ spec:
           && sed -i "s/truncate=true/truncate=false/g" /payload/software/sh/include.sh
           && wget -q https://dl.minio.io/client/mc/release/linux-amd64/mc
           && chmod +x mc
-          && ./mc --config-folder /mc cp s3-nba-brondata/brondata-wrnnl/wrnnl-specimens-2018-10-17.tar.gz /payload/data/json
-          && tar -xf /payload/data/json/wrnnl-specimens-2018-10-17.tar.gz -C /payload/data/json  
+          && ./mc --config-folder /mc cp s3-nba-brondata/brondata-wrnnl/wrnnl-specimens-2018-10-17.tar.gz /payload/data/json/specimen
+          && tar -xf /payload/data/json/specimen/wrnnl-specimens-2018-10-17.tar.gz -C /payload/data/json/specimen  
           && ./mc --config-folder /mc cp s3-nba-brondata/brondata-medialib/medialib-2018-07-30.tar.gz /payload/data/medialib
           && tar -xf /payload/data/medialib/medialib-2018-07-30.tar.gz -C /payload/data/medialib
           && ./json-import specimen ; result=$?
@@ -43,7 +43,7 @@ spec:
         - name: logdir
           mountPath: /payload/software/log
         - name: datadir
-          mountPath: /payload/data/json
+          mountPath: /payload/data/json/specimen
         - name: mediadir
           mountPath: /payload/data/medialib
         - name: etl-nba-properties

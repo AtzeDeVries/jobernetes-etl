@@ -26,8 +26,8 @@ spec:
           && sed -i "s/truncate=true/truncate=false/g" /payload/software/sh/include.sh
           && wget -q https://dl.minio.io/client/mc/release/linux-amd64/mc
           && chmod +x mc
-          && ./mc --config-folder /mc cp s3-nba-brondata/brondata-xc/xc-multimedia-2018-10-15.tar.gz /payload/data/json
-          && tar -xf /payload/data/json/xc-multimedia-2018-10-15.tar.gz -C /payload/data/json  
+          && ./mc --config-folder /mc cp s3-nba-brondata/brondata-xc/xc-multimedia-2018-10-15.tar.gz /payload/data/json/multimedia
+          && tar -xf /payload/data/json/multimedia/xc-multimedia-2018-10-15.tar.gz -C /payload/data/json/multimedia  
           && ./mc --config-folder /mc cp s3-nba-brondata/brondata-medialib/medialib-2018-07-30.tar.gz /payload/data/medialib
           && tar -xf /payload/data/medialib/medialib-2018-07-30.tar.gz -C /payload/data/medialib
           && ./json-import multimedia ; result=$?
@@ -43,7 +43,7 @@ spec:
         - name: logdir
           mountPath: /payload/software/log
         - name: datadir
-          mountPath: /payload/data/json
+          mountPath: /payload/data/json/multimedia
         - name: mediadir
           mountPath: /payload/data/medialib
         - name: etl-nba-properties
