@@ -15,7 +15,7 @@ spec:
       restartPolicy: Never
       containers:
       - name: etl-xc-specimens
-        image: naturalis/nba-etl:V2.17_dev-5aa134b
+        image: naturalis/nba-etl:V2.17-f6b55c2
         imagePullPolicy: Always
         command: ["/bin/bash"]
         args:
@@ -26,13 +26,13 @@ spec:
           && sed -i "s/truncate=true/truncate=false/g" /payload/software/sh/include.sh
           && wget -q https://dl.minio.io/client/mc/release/linux-amd64/mc
           && chmod +x mc
-          && ./mc --config-folder /mc cp s3-nba-brondata/brondata-xc/xc-specimens-2018-10-15.tar.gz /payload/data/json/specimen
-          && tar -xf /payload/data/json/specimen/xc-specimens-2018-10-15.tar.gz -C /payload/data/json/specimen  
+          && ./mc --config-folder /mc cp s3-nba-brondata/brondata-xc/xc-specimens-2018-11-02.tar.gz /payload/data/json/specimen
+          && tar -xf /payload/data/json/specimen/xc-specimens-2018-11-02.tar.gz -C /payload/data/json/specimen  
           && ./mc --config-folder /mc cp s3-nba-brondata/brondata-medialib/medialib-2018-07-30.tar.gz /payload/data/medialib
           && tar -xf /payload/data/medialib/medialib-2018-07-30.tar.gz -C /payload/data/medialib
           && ./json-import specimen ; result=$?
           && gzip /payload/software/log/*.log
-          && ./mc --config-folder /mc cp /payload/software/log/*.gz s3-nba-brondata/import-logs/2018-10-17/$(date +'%Y.%m.%d-%H.%M.%S')-xc-specimens.log.gz
+          && ./mc --config-folder /mc cp /payload/software/log/*.gz s3-nba-brondata/import-logs/2018-11-05/$(date +'%Y.%m.%d-%H.%M.%S')-xc-specimens.log.gz
           && exit $result
         env:
         - name: "LOG_LEVEL"

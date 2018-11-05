@@ -24,11 +24,11 @@ spec:
           set -x
           && wget -q https://dl.minio.io/client/mc/release/linux-amd64/mc
           && chmod +x mc
-          && ./mc --config-folder /mc-config cp --recursive s3-nba-brondata/import-logs/2018-10-17/ /logs
+          && ./mc --config-folder /mc-config cp --recursive s3-nba-brondata/import-logs/2018-11-05/ /logs
           && cd /nba-log-parser
           && php index.php
           && cd /
-          && ./mc --config-folder /mc-config cp --recursive /logs/ s3-nba-brondata/import-logs/2018-10-17
+          && ./mc --config-folder /mc-config cp --recursive /logs/ s3-nba-brondata/import-logs/2018-11-05
         volumeMounts:
         - name: datadir
           mountPath: /logs

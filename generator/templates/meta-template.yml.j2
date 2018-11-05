@@ -30,6 +30,8 @@ spec:
            && apk add --no-cache curl
            && curl -XPOST -s 'http://elasticsearch-data:9200/meta/importdata/importdata' -d '{
             "brahms_sourcefile" : "{{ hostvars['brahms-l1-specimens']['s3_file'] }}",
+            "xc_specimens_sourcefile" : "{{ hostvars['xc-specimens']['s3_file'] }}",
+            "xc_multimedia_sourcefile" : "{{ hostvars['xc-multimedia']['s3_file'] }}",
             "crs_specimens_sourcefile" : "{{ hostvars['crs-specimens']['s3_file'] }}",
             "crs_multimedia_sourcefile" : "{{ hostvars['crs-multimedia']['s3_file'] }}",
             "col_source_file" : "{{ hostvars['col-taxa']['s3_file'] }}",

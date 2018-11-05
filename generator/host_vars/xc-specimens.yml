@@ -1,4 +1,4 @@
-s3_file: xc-specimens-2018-10-15.tar.gz
+s3_file: xc-specimens-2018-11-02.tar.gz
 import_command: ./json-import specimen
 data_dir: /payload/data/json/specimen
 
