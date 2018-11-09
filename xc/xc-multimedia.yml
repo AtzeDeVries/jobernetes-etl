@@ -28,11 +28,11 @@ spec:
           && chmod +x mc
           && ./mc --config-folder /mc cp s3-nba-brondata/brondata-xc/xc-multimedia-2018-11-02.tar.gz /payload/data/json/multimedia
           && tar -xf /payload/data/json/multimedia/xc-multimedia-2018-11-02.tar.gz -C /payload/data/json/multimedia  
-          && ./mc --config-folder /mc cp s3-nba-brondata/brondata-medialib/medialib-2018-07-30.tar.gz /payload/data/medialib
-          && tar -xf /payload/data/medialib/medialib-2018-07-30.tar.gz -C /payload/data/medialib
+          && ./mc --config-folder /mc cp s3-nba-brondata/brondata-medialib/medialib-2018-11-09.tar.gz /payload/data/medialib
+          && tar -xf /payload/data/medialib/medialib-2018-11-09.tar.gz -C /payload/data/medialib
           && ./json-import multimedia ; result=$?
           && gzip /payload/software/log/*.log
-          && ./mc --config-folder /mc cp /payload/software/log/*.gz s3-nba-brondata/import-logs/2018-11-05/$(date +'%Y.%m.%d-%H.%M.%S')-xc-multimedia.log.gz
+          && ./mc --config-folder /mc cp /payload/software/log/*.gz s3-nba-brondata/import-logs/2018-11-09/$(date +'%Y.%m.%d-%H.%M.%S')-xc-multimedia.log.gz
           && exit $result
         env:
         - name: "LOG_LEVEL"

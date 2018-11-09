@@ -26,13 +26,13 @@ spec:
           && sed -i "s/truncate=true/truncate=false/g" /payload/software/sh/include.sh
           && wget -q https://dl.minio.io/client/mc/release/linux-amd64/mc
           && chmod +x mc
-          && ./mc --config-folder /mc cp s3-nba-brondata/brondata-crs/crs-specimens-2018-07-30.tar.gz /payload/data/crs
-          && tar -xf /payload/data/crs/crs-specimens-2018-07-30.tar.gz -C /payload/data/crs  
-          && ./mc --config-folder /mc cp s3-nba-brondata/brondata-medialib/medialib-2018-07-30.tar.gz /payload/data/medialib
-          && tar -xf /payload/data/medialib/medialib-2018-07-30.tar.gz -C /payload/data/medialib
+          && ./mc --config-folder /mc cp s3-nba-brondata/brondata-crs/crs-specimens-2018-11-08.tar.gz /payload/data/crs
+          && tar -xf /payload/data/crs/crs-specimens-2018-11-08.tar.gz -C /payload/data/crs  
+          && ./mc --config-folder /mc cp s3-nba-brondata/brondata-medialib/medialib-2018-11-09.tar.gz /payload/data/medialib
+          && tar -xf /payload/data/medialib/medialib-2018-11-09.tar.gz -C /payload/data/medialib
           && ./crs-import specimens ; result=$?
           && gzip /payload/software/log/*.log
-          && ./mc --config-folder /mc cp /payload/software/log/*.gz s3-nba-brondata/import-logs/2018-11-05/$(date +'%Y.%m.%d-%H.%M.%S')-crs-specimens.log.gz
+          && ./mc --config-folder /mc cp /payload/software/log/*.gz s3-nba-brondata/import-logs/2018-11-09/$(date +'%Y.%m.%d-%H.%M.%S')-crs-specimens.log.gz
           && exit $result
         env:
         - name: "LOG_LEVEL"
