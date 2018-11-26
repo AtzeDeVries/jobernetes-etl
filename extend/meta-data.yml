@@ -37,7 +37,7 @@ spec:
             "col_source_file" : "col-2018-04-30.tar.gz",
             "geo_source_file" : "geo-2018-02-08.tar.gz",
             "nsr_source_file" : "nsr-2018-11-04.tar.gz",
-            "etl_version" : "V2.17-f6b55c2",
+            "etl_version" : "V2.18_dev_ES5.6.13-a301355",
             "medialib_cache_sourcefile" : "medialib-2018-11-09.tar.gz",
-            "import_date" : "2018-11-09"
+            "import_date" : "2018-11-26"
            }'

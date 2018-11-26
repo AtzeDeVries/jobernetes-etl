@@ -82,7 +82,7 @@ jobernetes:
       - name: force_merge
         job_path: jobernetes-etl/merge/force-merge.yml
 
-  - phase_name: snapshot
-    jobs:
-      - name: take_snapshot
-        job_path: jobernetes-etl/snapshot/take-snapshot.yml
+        #  - phase_name: snapshot
+        #    jobs:
+        #      - name: take_snapshot
+        #        job_path: jobernetes-etl/snapshot/take-snapshot.yml
