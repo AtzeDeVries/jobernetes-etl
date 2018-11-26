@@ -5,6 +5,7 @@ jobernetes_config:
   ssl_insecure_warnings: False
   incluster: True
   parallelization: 5
+  namespace: nba-v2-production
 jobernetes:
   - phase_name: bootstrap
     jobs:
