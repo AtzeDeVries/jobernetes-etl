@@ -1,8 +1,8 @@
 apiVersion: v1
 data:
   nba.properties: |
-    elasticsearch.cluster.name=myesdb
-    elasticsearch.transportaddress.host=elasticsearch
+    elasticsearch.cluster.name=nba-cluster
+    elasticsearch.transportaddress.host=elasticsearch-data
     elasticsearch.transportaddress.port=9300
     elasticsearch.index.default.shards=16
     elasticsearch.index.default.replicas=0
@@ -15,7 +15,7 @@ data:
     elasticsearch.index.3.name=geoareas
     elasticsearch.index.3.types=GeoArea
     elasticsearch.index.3.shards=1
-    install.dir=/payload/software
+    nba.etl.install.dir=/payload/software
     crs.data.dir=/payload/data/crs
     col.data.dir=/payload/data/col
     brahms.data.dir=/payload/data/brahms
@@ -23,8 +23,9 @@ data:
     geo.data.dir=/payload/data/geo
     ndff.data.dir=/payload/data/ndff
     medialib.data.dir=/payload/data/medialib
-    col.year=2017
-    purl.baseurl=
+    json.data.dir=/payload/data/json
+    col.year=2018
+    purl.baseurl=http://data.biodiversitydata.nl
 kind: ConfigMap
 metadata:
   name: etl.nba.properties
