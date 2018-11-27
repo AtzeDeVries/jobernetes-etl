@@ -24,9 +24,10 @@ spec:
           set -x
           && wget -q https://dl.minio.io/client/mc/release/linux-amd64/mc
           && chmod +x mc
+					&& cp -fr /mc /mcwriteable
           && ./bootstrap --all ; result=$?
           && gzip /payload/software/log/*.log
-          && ./mc --config-folder /mc cp /payload/software/log/*.gz s3-nba-brondata/import-logs/{{current_date.stdout}}/$(date +'%Y.%m.%d-%H.%M.%S')-{{inventory_hostname}}.log.gz
+          && ./mc --config-folder /mcwriteable cp /payload/software/log/*.gz s3-nba-brondata/import-logs/{{current_date.stdout}}/$(date +'%Y.%m.%d-%H.%M.%S')-{{inventory_hostname}}.log.gz
           && exit $result
         volumeMounts:
         - name: logdir

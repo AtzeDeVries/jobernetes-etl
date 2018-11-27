@@ -25,9 +25,10 @@ spec:
           && sed -i 's/read_batch_size=1000/read_batch_size=500/g' add-multimedia-to-specimens
           && wget -q https://dl.minio.io/client/mc/release/linux-amd64/mc
           && chmod +x mc
+					&& cp -fr /mc /mcwriteable
           && ./add-multimedia-to-specimens ; result=$?
           && gzip /payload/software/log/*.log
-          && ./mc --config-folder /mc cp /payload/software/log/*.gz s3-nba-brondata/import-logs/2018-11-27/$(date +'%Y.%m.%d-%H.%M.%S')-add-multimedia-to-specimens.log.gz
+          && ./mc --config-folder /mcwriteable cp /payload/software/log/*.gz s3-nba-brondata/import-logs/2018-11-27/$(date +'%Y.%m.%d-%H.%M.%S')-add-multimedia-to-specimens.log.gz
           && exit $result
         volumeMounts:
         - name: logdir
