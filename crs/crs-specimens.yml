@@ -15,7 +15,7 @@ spec:
       restartPolicy: Never
       containers:
       - name: etl-crs-specimens
-        image: naturalis/nba-etl:V2.18_dev_ES5.6.13-a301355
+        image: naturalis/nba-etl:V2.18_dev_ES5.6.13-9fb6f55
         imagePullPolicy: Always
         command: ["/bin/bash"]
         args:
@@ -32,7 +32,7 @@ spec:
           && tar -xf /payload/data/medialib/medialib-2018-11-09.tar.gz -C /payload/data/medialib
           && ./crs-import specimens ; result=$?
           && gzip /payload/software/log/*.log
-          && ./mc --config-folder /mc cp /payload/software/log/*.gz s3-nba-brondata/import-logs/2018-11-26/$(date +'%Y.%m.%d-%H.%M.%S')-crs-specimens.log.gz
+          && ./mc --config-folder /mc cp /payload/software/log/*.gz s3-nba-brondata/import-logs/2018-11-27/$(date +'%Y.%m.%d-%H.%M.%S')-crs-specimens.log.gz
           && exit $result
         env:
         - name: "LOG_LEVEL"
