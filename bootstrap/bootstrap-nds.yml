@@ -24,7 +24,7 @@ spec:
           set -x
           && wget -q https://dl.minio.io/client/mc/release/linux-amd64/mc
           && chmod +x mc
-					&& cp -fr /mc /mcwriteable
+          && cp -fr /mc /mcwriteable
           && ./bootstrap --all ; result=$?
           && gzip /payload/software/log/*.log
           && ./mc --config-folder /mcwriteable cp /payload/software/log/*.gz s3-nba-brondata/import-logs/2018-11-27/$(date +'%Y.%m.%d-%H.%M.%S')-bootstrap-nds.log.gz

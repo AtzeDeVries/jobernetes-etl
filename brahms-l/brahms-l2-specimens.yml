@@ -26,7 +26,7 @@ spec:
           && sed -i "s/truncate=true/truncate=false/g" /payload/software/sh/include.sh
           && wget -q https://dl.minio.io/client/mc/release/linux-amd64/mc
           && chmod +x mc
-					&& cp -fr /mc /mcwriteable
+          && cp -fr /mc /mcwriteable
           && ./mc --config-folder /mcwriteable cp s3-nba-brondata/brondata-brahms/brahms-2018-10-04.tar.gz /payload/data/brahms
           && tar -xf /payload/data/brahms/brahms-2018-10-04.tar.gz -C /payload/data/brahms  --wildcards --no-anchored 'L_2*'
           && ./mc --config-folder /mcwriteable cp s3-nba-brondata/brondata-medialib/medialib-2018-11-09.tar.gz /payload/data/medialib

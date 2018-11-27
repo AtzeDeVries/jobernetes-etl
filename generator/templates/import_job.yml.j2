@@ -26,7 +26,7 @@ spec:
           && sed -i "s/truncate=true/truncate=false/g" /payload/software/sh/include.sh
           && wget -q https://dl.minio.io/client/mc/release/linux-amd64/mc
           && chmod +x mc
-					&& cp -fr /mc /mcwriteable
+          && cp -fr /mc /mcwriteable
           && ./mc --config-folder /mcwriteable cp s3-nba-brondata/{{s3_bucket}}/{{s3_file}} {{data_dir}}
           && tar -xf {{data_dir}}/{{s3_file}} -C {{data_dir}}  {{extract_wildcard}}
           && ./mc --config-folder /mcwriteable cp s3-nba-brondata/brondata-medialib/{{s3_medialib_file}} /payload/data/medialib

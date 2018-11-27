@@ -24,7 +24,7 @@ spec:
           set -x
           && wget -q https://dl.minio.io/client/mc/release/linux-amd64/mc
           && chmod +x mc
-					&& cp -fr /mc /mcwriteable
+          && cp -fr /mc /mcwriteable
           && ./mc --config-folder /mcwriteable cp --recursive s3-nba-brondata/import-logs/2018-11-27/ /logs
           && cd /nba-log-parser
           && php index.php
