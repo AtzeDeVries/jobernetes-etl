@@ -27,13 +27,13 @@ spec:
           && wget -q https://dl.minio.io/client/mc/release/linux-amd64/mc
           && chmod +x mc
           && cp -fr /mc /mcwriteable
-          && ./mc --config-folder /mcwriteable cp s3-nba-brondata/{{s3_bucket}}/{{s3_file}} {{data_dir}}
+          && ./mc --config-dir /mcwriteable cp s3-nba-brondata/{{s3_bucket}}/{{s3_file}} {{data_dir}}
           && tar -xf {{data_dir}}/{{s3_file}} -C {{data_dir}}  {{extract_wildcard}}
-          && ./mc --config-folder /mcwriteable cp s3-nba-brondata/brondata-medialib/{{s3_medialib_file}} /payload/data/medialib
+          && ./mc --config-dir /mcwriteable cp s3-nba-brondata/brondata-medialib/{{s3_medialib_file}} /payload/data/medialib
           && tar -xf /payload/data/medialib/{{s3_medialib_file}} -C /payload/data/medialib
           && {{import_command}} ; result=$?
           && gzip /payload/software/log/*.log
-          && ./mc --config-folder /mcwriteable cp /payload/software/log/*.gz s3-nba-brondata/import-logs/{{current_date.stdout}}/$(date +'%Y.%m.%d-%H.%M.%S')-{{inventory_hostname}}.log.gz
+          && ./mc --config-dir /mcwriteable cp /payload/software/log/*.gz s3-nba-brondata/import-logs/{{current_date.stdout}}/$(date +'%Y.%m.%d-%H.%M.%S')-{{inventory_hostname}}.log.gz
           && exit $result
         env:
         - name: "LOG_LEVEL"
