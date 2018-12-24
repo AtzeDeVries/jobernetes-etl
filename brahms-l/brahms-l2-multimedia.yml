@@ -15,7 +15,7 @@ spec:
       restartPolicy: Never
       containers:
       - name: etl-brahms-l2-multimedia
-        image: naturalis/nba-etl:V2.18-82364ca
+        image: naturalis/nba-etl:V2.17.1-675e712
         imagePullPolicy: Always
         command: ["/bin/bash"]
         args:
@@ -33,7 +33,7 @@ spec:
           && tar -xf /payload/data/medialib/medialib-2018-11-09.tar.gz -C /payload/data/medialib
           && ./brahms-import multimedia ; result=$?
           && gzip /payload/software/log/*.log
-          && ./mc --config-dir /mcwriteable cp /payload/software/log/*.gz s3-nba-brondata/import-logs/2018-12-21/$(date +'%Y.%m.%d-%H.%M.%S')-brahms-l2-multimedia.log.gz
+          && ./mc --config-dir /mcwriteable cp /payload/software/log/*.gz s3-nba-brondata/import-logs/2018-12-24/$(date +'%Y.%m.%d-%H.%M.%S')-brahms-l2-multimedia.log.gz
           && exit $result
         env:
         - name: "LOG_LEVEL"
