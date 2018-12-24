@@ -1,4 +1,4 @@
-s3_file: wrnnl-specimens-2018-10-17.tar.gz
+s3_file: wrnnl-specimens-2018-12-17.tar.gz
 import_command: ./json-import specimen
 data_dir: /payload/data/json/specimen
 

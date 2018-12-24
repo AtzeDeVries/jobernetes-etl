@@ -19,9 +19,9 @@ jobernetes:
         job_path: jobernetes-etl/xc/xc-specimens.yml
       - name: import_xc_mm
         job_path: jobernetes-etl/xc/xc-multimedia.yml
-        #      #import wrnnl
-        #      - name: import_wrnnl_sp
-        #        job_path: jobernetes-etl/wrnnl/wrnnl-specimens.yml
+      #import wrnnl
+      - name: import_wrnnl_sp
+        job_path: jobernetes-etl/wrnnl/wrnnl-specimens.yml
       #brahms import
       - name: import_brahms_amd
         job_path: jobernetes-etl/brahms-amd

@@ -39,5 +39,5 @@ spec:
             "nsr_source_file" : "nsr-2018-11-04.tar.gz",
             "etl_version" : "V2.18-82364ca",
             "medialib_cache_sourcefile" : "medialib-2018-11-09.tar.gz",
-            "import_date" : "2018-12-18"
+            "import_date" : "2018-12-21"
            }'

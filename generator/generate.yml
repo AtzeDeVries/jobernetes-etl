@@ -22,9 +22,4 @@
       dest: "{{jobs_dir}}/{{group_names[0]}}/{{inventory_hostname}}.yml"
     delegate_to: localhost
 
-  - name: debug
-    debug:
-      msg: "{{ hostvars['brahms-l6-specimens']['s3_file'] }}"
-    tags:
-      - vars
-    delegate_to: localhost
+
