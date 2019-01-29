@@ -27,13 +27,13 @@ spec:
           && wget -q https://dl.minio.io/client/mc/release/linux-amd64/mc
           && chmod +x mc
           && cp -fr /mc /mcwriteable
-          && ./mc --config-dir /mcwriteable cp s3-nba-brondata/brondata-brahms/brahms-2018-10-04.tar.gz /payload/data/brahms
-          && tar -xf /payload/data/brahms/brahms-2018-10-04.tar.gz -C /payload/data/brahms  --wildcards --no-anchored 'L_4*'
-          && ./mc --config-dir /mcwriteable cp s3-nba-brondata/brondata-medialib/medialib-2018-11-09.tar.gz /payload/data/medialib
-          && tar -xf /payload/data/medialib/medialib-2018-11-09.tar.gz -C /payload/data/medialib
+          && ./mc --config-dir /mcwriteable cp s3-nba-brondata/brondata-brahms/brahms-2019-01-25.tar.gz /payload/data/brahms
+          && tar -xf /payload/data/brahms/brahms-2019-01-25.tar.gz -C /payload/data/brahms  --wildcards --no-anchored 'L_4*'
+          && ./mc --config-dir /mcwriteable cp s3-nba-brondata/brondata-medialib/medialib-2019-01-28.tar.gz /payload/data/medialib
+          && tar -xf /payload/data/medialib/medialib-2019-01-28.tar.gz -C /payload/data/medialib
           && ./brahms-import multimedia ; result=$?
           && gzip /payload/software/log/*.log
-          && ./mc --config-dir /mcwriteable cp /payload/software/log/*.gz s3-nba-brondata/import-logs/2018-12-24/$(date +'%Y.%m.%d-%H.%M.%S')-brahms-l4-multimedia.log.gz
+          && ./mc --config-dir /mcwriteable cp /payload/software/log/*.gz s3-nba-brondata/import-logs/2019-01-29/$(date +'%Y.%m.%d-%H.%M.%S')-brahms-l4-multimedia.log.gz
           && exit $result
         env:
         - name: "LOG_LEVEL"
