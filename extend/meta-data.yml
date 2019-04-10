@@ -39,5 +39,5 @@ spec:
             "nsr_source_file" : "nsr-2019-01-27.tar.gz",
             "etl_version" : "V2.17.1-675e712",
             "medialib_cache_sourcefile" : "medialib-2019-01-28.tar.gz",
-            "import_date" : "2019-01-29"
+            "import_date" : "2019-04-10"
            }'
