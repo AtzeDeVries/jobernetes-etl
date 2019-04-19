@@ -1,2 +1,2 @@
-s3_file: crs-multimedia-2019-01-25.tar.gz
+s3_file: crs-multimedia-2018-11-08.tar.gz 
 import_command: ./crs-import multimedia
