@@ -29,11 +29,11 @@ spec:
           && cp -fr /mc /mcwriteable
           && ./mc --config-dir /mcwriteable cp s3-nba-brondata/brondata-col/col-2018-04-30.tar.gz /payload/data/col
           && tar -xf /payload/data/col/col-2018-04-30.tar.gz -C /payload/data/col  
-          && ./mc --config-dir /mcwriteable cp s3-nba-brondata/brondata-medialib/medialib-2019-01-28.tar.gz /payload/data/medialib
-          && tar -xf /payload/data/medialib/medialib-2019-01-28.tar.gz -C /payload/data/medialib
+          && ./mc --config-dir /mcwriteable cp s3-nba-brondata/brondata-medialib/medialib-2018-11-09.tar.gz /payload/data/medialib
+          && tar -xf /payload/data/medialib/medialib-2018-11-09.tar.gz -C /payload/data/medialib
           && ./col-import ; result=$?
           && gzip /payload/software/log/*.log
-          && ./mc --config-dir /mcwriteable cp /payload/software/log/*.gz s3-nba-brondata/import-logs/2019-04-18/$(date +'%Y.%m.%d-%H.%M.%S')-col-taxa.log.gz
+          && ./mc --config-dir /mcwriteable cp /payload/software/log/*.gz s3-nba-brondata/import-logs/2019-04-19/$(date +'%Y.%m.%d-%H.%M.%S')-col-taxa.log.gz
           && exit $result
         env:
         - name: "LOG_LEVEL"

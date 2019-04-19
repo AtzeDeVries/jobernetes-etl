@@ -29,15 +29,15 @@ spec:
            set -x
            && apk add --no-cache curl
            && curl -XPOST -s 'http://elasticsearch-data:9200/meta/importdata/importdata' -d '{
-            "brahms_sourcefile" : "brahms-2019-01-25.tar.gz",
-            "xc_specimens_sourcefile" : "xc-specimens-2019-01-21.tar.gz",
-            "xc_multimedia_sourcefile" : "xc-multimedia-2019-01-21.tar.gz",
-            "crs_specimens_sourcefile" : "crs-specimens-2019-01-25.tar.gz",
-            "crs_multimedia_sourcefile" : "crs-multimedia-2019-01-25.tar.gz",
+            "brahms_sourcefile" : "brahms-2018-10-04.tar.gz",
+            "xc_specimens_sourcefile" : "xc-specimens-2018-12-14.tar.gz",
+            "xc_multimedia_sourcefile" : "xc-multimedia-2018-12-14.tar.gz",
+            "crs_specimens_sourcefile" : "crs-specimens-2018-11-08.tar.gz",
+            "crs_multimedia_sourcefile" : "crs-multimedia-2018-11-08.tar.gz",
             "col_source_file" : "col-2018-04-30.tar.gz",
             "geo_source_file" : "geo-2018-02-08.tar.gz",
-            "nsr_source_file" : "nsr-2019-01-27.tar.gz",
+            "nsr_source_file" : "nsr-2018-11-04.tar.gz",
             "etl_version" : "V2.17.1-675e712",
-            "medialib_cache_sourcefile" : "medialib-2019-01-28.tar.gz",
-            "import_date" : "2019-04-18"
+            "medialib_cache_sourcefile" : "medialib-2018-11-09.tar.gz",
+            "import_date" : "2019-04-19"
            }'
