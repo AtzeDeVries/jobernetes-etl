@@ -19,7 +19,7 @@ spec:
         imagePullPolicy: Always
         args:
         - -XPUT
-        - 'http://elasticsearch-data:9200/_snapshot/nba-import-snapshots/nba-import-2019-04-19?wait_for_completion=true'
+        - 'http://elasticsearch-data:9200/_snapshot/nba-import-snapshots/nba-import-2019-04-23?wait_for_completion=true'
         - -d
         - '{ "indices": "specimen,taxon,multimedia,geoareas,storageunits,meta" }'
 
