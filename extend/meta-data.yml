@@ -31,7 +31,7 @@ spec:
            && curl -XPOST -s 'http://elasticsearch-data:9200/meta/importdata/importdata' -d '{
             "brahms_sourcefile" : "brahms-2019-05-07.tar.gz",
             "xc_specimens_sourcefile" : "xc-specimens-20190508.tar.gz",
-            "xc_multimedia_sourcefile" : "xc-multimedia-20180508.tar.gz",
+            "xc_multimedia_sourcefile" : "xc-multimedia-20190508.tar.gz",
             "crs_specimens_sourcefile" : "crs-specimens-2019-05-07.tar.gz",
             "crs_multimedia_sourcefile" : "crs-multimedia-2019-05-07.tar.gz",
             "col_source_file" : "col-2018-04-30.tar.gz",

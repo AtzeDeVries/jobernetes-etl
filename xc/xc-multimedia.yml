@@ -27,8 +27,8 @@ spec:
           && wget -q https://dl.minio.io/client/mc/release/linux-amd64/mc
           && chmod +x mc
           && cp -fr /mc /mcwriteable
-          && ./mc --config-dir /mcwriteable cp s3-nba-brondata/brondata-xc/xc-multimedia-20180508.tar.gz /payload/data/json/multimedia
-          && tar -xf /payload/data/json/multimedia/xc-multimedia-20180508.tar.gz -C /payload/data/json/multimedia  
+          && ./mc --config-dir /mcwriteable cp s3-nba-brondata/brondata-xc/xc-multimedia-20190508.tar.gz /payload/data/json/multimedia
+          && tar -xf /payload/data/json/multimedia/xc-multimedia-20190508.tar.gz -C /payload/data/json/multimedia  
           && ./mc --config-dir /mcwriteable cp s3-nba-brondata/brondata-medialib/medialib-2019-05-08.tar.gz /payload/data/medialib
           && tar -xf /payload/data/medialib/medialib-2019-05-08.tar.gz -C /payload/data/medialib
           && ./json-import multimedia ; result=$?

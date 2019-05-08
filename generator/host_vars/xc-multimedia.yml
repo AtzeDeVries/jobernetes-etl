@@ -1,3 +1,3 @@
-s3_file: xc-multimedia-20180508.tar.gz 
+s3_file: xc-multimedia-20190508.tar.gz 
 import_command: ./json-import multimedia
 data_dir: /payload/data/json/multimedia
