@@ -1,5 +1,5 @@
 data_dir: "/payload/data/brahms"
 s3_bucket: "brondata-brahms"
-s3_file: "brahms-2018-10-04.tar.gz"
+s3_file: "brahms-2019-05-07.tar.gz"
 
 

@@ -24,7 +24,7 @@ data:
     ndff.data.dir=/payload/data/ndff
     medialib.data.dir=/payload/data/medialib
     json.data.dir=/payload/data/json
-    col.year=2018
+    col.year=2019
     purl.baseurl=http://data.biodiversitydata.nl
 kind: ConfigMap
 metadata:
