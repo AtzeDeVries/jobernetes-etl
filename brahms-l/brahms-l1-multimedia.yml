@@ -33,7 +33,7 @@ spec:
           && tar -xf /payload/data/medialib/medialib-2019-05-08.tar.gz -C /payload/data/medialib
           && ./brahms-import multimedia ; result=$?
           && gzip /payload/software/log/*.log
-          && ./mc --config-dir /mcwriteable cp /payload/software/log/*.gz s3-nba-brondata/import-logs/2019-05-08/$(date +'%Y.%m.%d-%H.%M.%S')-brahms-l1-multimedia.log.gz
+          && ./mc --config-dir /mcwriteable cp /payload/software/log/*.gz s3-nba-brondata/import-logs/2019-05-15/$(date +'%Y.%m.%d-%H.%M.%S')-brahms-l1-multimedia.log.gz
           && exit $result
         env:
         - name: "LOG_LEVEL"
