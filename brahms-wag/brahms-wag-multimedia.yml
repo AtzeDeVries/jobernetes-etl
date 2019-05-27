@@ -29,11 +29,11 @@ spec:
           && cp -fr /mc /mcwriteable
           && ./mc --config-dir /mcwriteable cp s3-nba-brondata/brondata-brahms/brahms-2019-05-07.tar.gz /payload/data/brahms
           && tar -xf /payload/data/brahms/brahms-2019-05-07.tar.gz -C /payload/data/brahms  --wildcards --no-anchored 'WAG*'
-          && ./mc --config-dir /mcwriteable cp s3-nba-brondata/brondata-medialib/medialib-2019-05-08.tar.gz /payload/data/medialib
-          && tar -xf /payload/data/medialib/medialib-2019-05-08.tar.gz -C /payload/data/medialib
+          && ./mc --config-dir /mcwriteable cp s3-nba-brondata/brondata-medialib/medialib-2019-05-27.tar.gz /payload/data/medialib
+          && tar -xf /payload/data/medialib/medialib-2019-05-27.tar.gz -C /payload/data/medialib
           && ./brahms-import multimedia ; result=$?
           && gzip /payload/software/log/*.log
-          && ./mc --config-dir /mcwriteable cp /payload/software/log/*.gz s3-nba-brondata/import-logs/2019-05-16/$(date +'%Y.%m.%d-%H.%M.%S')-brahms-wag-multimedia.log.gz
+          && ./mc --config-dir /mcwriteable cp /payload/software/log/*.gz s3-nba-brondata/import-logs/2019-05-27/$(date +'%Y.%m.%d-%H.%M.%S')-brahms-wag-multimedia.log.gz
           && exit $result
         env:
         - name: "LOG_LEVEL"
