@@ -15,7 +15,7 @@ spec:
       restartPolicy: Never
       containers:
       - name: etl-add-taxonomy-to-multimedia
-        image: naturalis/nba-etl:V2.17.1-675e712
+        image: naturalis/nba-etl:V2_master-a5a48fe
         imagePullPolicy: Always
         command: ["/bin/sh"]
         args:
@@ -28,7 +28,7 @@ spec:
           && cp -fr /mc /mcwriteable
           && ./add-taxonomy-to-multimedia ; result=$?
           && gzip /payload/software/log/*.log
-          && ./mc --config-dir /mcwriteable cp /payload/software/log/*.gz s3-nba-brondata/import-logs/2019-05-27/$(date +'%Y.%m.%d-%H.%M.%S')-add-taxonomy-to-multimedia.log.gz
+          && ./mc --config-dir /mcwriteable cp /payload/software/log/*.gz s3-nba-brondata/import-logs/2019-06-03/$(date +'%Y.%m.%d-%H.%M.%S')-add-taxonomy-to-multimedia.log.gz
           && exit $result
         volumeMounts:
         - name: logdir

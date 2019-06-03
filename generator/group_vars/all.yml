@@ -2,7 +2,8 @@
 #job_name: demo
 #container_version: V2.17-f6b55c2
 #container_version: V2.18-82364ca
-container_version: V2.17.1-675e712 
+#container_version: V2.17.1-675e712 
+container_version: V2_master-a5a48fe
 s3_bucket: brondata-unknown
 s3_file: unknown-2011-11-11.tar.gz
 data_dir: /payload/data/demo
