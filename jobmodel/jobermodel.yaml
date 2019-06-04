@@ -5,7 +5,7 @@ jobernetes_config:
   ssl_insecure_warnings: False
   incluster: True
   parallelization: 5
-  kubernetes_namespace: nba-mei
+  kubernetes_namespace: nba-jun
 jobernetes:
   - phase_name: bootstrap
     jobs:
