@@ -37,7 +37,7 @@ spec:
             "col_source_file" : "col-2018-04-30.tar.gz",
             "geo_source_file" : "geo-2018-02-08.tar.gz",
             "nsr_source_file" : "nsr-2019-05-26.tar.gz",
-            "etl_version" : "V2_master-a5a48fe",
+            "etl_version" : "V2.19-a5a48fe",
             "medialib_cache_sourcefile" : "medialib-2019-05-27.tar.gz",
-            "import_date" : "2019-06-04"
+            "import_date" : "2019-06-06"
            }'
