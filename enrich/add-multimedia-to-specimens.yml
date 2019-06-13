@@ -28,7 +28,7 @@ spec:
           && cp -fr /mc /mcwriteable
           && ./add-multimedia-to-specimens ; result=$?
           && gzip /payload/software/log/*.log
-          && ./mc --config-dir /mcwriteable cp /payload/software/log/*.gz s3-nba-brondata/import-logs/2019-06-07/$(date +'%Y.%m.%d-%H.%M.%S')-add-multimedia-to-specimens.log.gz
+          && ./mc --config-dir /mcwriteable cp /payload/software/log/*.gz s3-nba-brondata/import-logs/2019-06-13/$(date +'%Y.%m.%d-%H.%M.%S')-add-multimedia-to-specimens.log.gz
           && exit $result
         volumeMounts:
         - name: logdir

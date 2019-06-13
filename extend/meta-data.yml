@@ -38,6 +38,6 @@ spec:
             "geo_source_file" : "geo-2018-02-08.tar.gz",
             "nsr_source_file" : "nsr-2019-05-26.tar.gz",
             "etl_version" : "V2.19-a5a48fe",
-            "medialib_cache_sourcefile" : "medialib-2019-05-27.tar.gz",
-            "import_date" : "2019-06-07"
+            "medialib_cache_sourcefile" : "medialib-2019-06-13.tar.gz",
+            "import_date" : "2019-06-13"
            }'
