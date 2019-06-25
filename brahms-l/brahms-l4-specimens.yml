@@ -15,7 +15,7 @@ spec:
       restartPolicy: Never
       containers:
       - name: etl-brahms-l4-specimens
-        image: naturalis/nba-etl:V2.19-a5a48fe
+        image: naturalis/nba-etl:V2.20-ad07ad9
         imagePullPolicy: Always
         command: ["/bin/bash"]
         args:
@@ -27,13 +27,13 @@ spec:
           && wget -q https://dl.minio.io/client/mc/release/linux-amd64/mc
           && chmod +x mc
           && cp -fr /mc /mcwriteable
-          && ./mc --config-dir /mcwriteable cp s3-nba-brondata/brondata-brahms/brahms-2019-05-07.tar.gz /payload/data/brahms
-          && tar -xf /payload/data/brahms/brahms-2019-05-07.tar.gz -C /payload/data/brahms  --wildcards --no-anchored 'L_4*'
-          && ./mc --config-dir /mcwriteable cp s3-nba-brondata/brondata-medialib/medialib-2019-06-13.tar.gz /payload/data/medialib
-          && tar -xf /payload/data/medialib/medialib-2019-06-13.tar.gz -C /payload/data/medialib
+          && ./mc --config-dir /mcwriteable cp s3-nba-brondata/brondata-brahms/brahms-2019-06-17.tar.gz /payload/data/brahms
+          && tar -xf /payload/data/brahms/brahms-2019-06-17.tar.gz -C /payload/data/brahms  --wildcards --no-anchored 'L_4*'
+          && ./mc --config-dir /mcwriteable cp s3-nba-brondata/brondata-medialib/medialib-2019-06-25.tar.gz /payload/data/medialib
+          && tar -xf /payload/data/medialib/medialib-2019-06-25.tar.gz -C /payload/data/medialib
           && ./brahms-import specimens ; result=$?
           && gzip /payload/software/log/*.log
-          && ./mc --config-dir /mcwriteable cp /payload/software/log/*.gz s3-nba-brondata/import-logs/2019-06-13/$(date +'%Y.%m.%d-%H.%M.%S')-brahms-l4-specimens.log.gz
+          && ./mc --config-dir /mcwriteable cp /payload/software/log/*.gz s3-nba-brondata/import-logs/2019-06-25/$(date +'%Y.%m.%d-%H.%M.%S')-brahms-l4-specimens.log.gz
           && exit $result
         env:
         - name: "LOG_LEVEL"
