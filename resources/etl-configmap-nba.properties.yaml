@@ -6,13 +6,13 @@ data:
     elasticsearch.transportaddress.port=9300
     elasticsearch.index.default.shards=16
     elasticsearch.index.default.replicas=0
-    elasticsearch.index.0.name=specimen
+    elasticsearch.index.0.name=specimen_2019-07-10
     elasticsearch.index.0.types=Specimen
-    elasticsearch.index.1.name=taxon
+    elasticsearch.index.1.name=taxon_2019-07-10
     elasticsearch.index.1.types=Taxon
-    elasticsearch.index.2.name=multimedia
+    elasticsearch.index.2.name=multimedia_2019-07-10
     elasticsearch.index.2.types=MultiMediaObject
-    elasticsearch.index.3.name=geoareas
+    elasticsearch.index.3.name=geoareas_2019-07-10
     elasticsearch.index.3.types=GeoArea
     elasticsearch.index.3.shards=1
     nba.etl.install.dir=/payload/software
