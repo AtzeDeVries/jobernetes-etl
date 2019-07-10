@@ -15,7 +15,7 @@ spec:
       restartPolicy: Never
       containers:
       - name: etl-xc-multimedia
-        image: naturalis/nba-etl:V2.19-a5a48fe
+        image: naturalis/nba-etl:V2.20-ad07ad9
         imagePullPolicy: Always
         command: ["/bin/bash"]
         args:
@@ -29,8 +29,8 @@ spec:
           && cp -fr /mc /mcwriteable
           && ./mc --config-dir /mcwriteable cp s3-nba-brondata/brondata-xc/xc-multimedia-2019-05-16.tar.gz /payload/data/json/multimedia
           && tar -xf /payload/data/json/multimedia/xc-multimedia-2019-05-16.tar.gz -C /payload/data/json/multimedia  
-          && ./mc --config-dir /mcwriteable cp s3-nba-brondata/brondata-medialib/medialib-2019-06-13.tar.gz /payload/data/medialib
-          && tar -xf /payload/data/medialib/medialib-2019-06-13.tar.gz -C /payload/data/medialib
+          && ./mc --config-dir /mcwriteable cp s3-nba-brondata/brondata-medialib/medialib-2019-06-25.tar.gz /payload/data/medialib
+          && tar -xf /payload/data/medialib/medialib-2019-06-25.tar.gz -C /payload/data/medialib
           && ./json-import multimedia ; result=$?
           && gzip /payload/software/log/*.log
           && ./mc --config-dir /mcwriteable cp /payload/software/log/*.gz s3-nba-brondata/import-logs/2019-07-10/$(date +'%Y.%m.%d-%H.%M.%S')-xc-multimedia.log.gz

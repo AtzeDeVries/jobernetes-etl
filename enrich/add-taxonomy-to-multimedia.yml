@@ -15,7 +15,7 @@ spec:
       restartPolicy: Never
       containers:
       - name: etl-add-taxonomy-to-multimedia
-        image: naturalis/nba-etl:V2.19-a5a48fe
+        image: naturalis/nba-etl:V2.20-ad07ad9
         imagePullPolicy: Always
         command: ["/bin/sh"]
         args:
